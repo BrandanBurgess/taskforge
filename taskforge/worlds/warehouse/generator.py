@@ -59,12 +59,20 @@ class GenParams:
 def params_for_difficulty(d: int) -> GenParams:
     """The default curriculum. Sizes are chosen so the oracle's full cost-to-go table
     stays computable at the low end and A* stays inside budget at the high end."""
+    # A note on why difficulty 5 has no battery. Battery is by far the most expensive
+    # knob for exact search: it multiplies the canonical state space by the charge range
+    # and it cannot be bucketed without making the oracle unsound. Measured on this
+    # machine, a 13x11 / 3-order world with battery certifies 4 of 6 seeds in 15s, while
+    # the same world without it certifies 6 of 6 in 1.5s. Rather than raise the node
+    # budget -- which would trade a picky verifier for a slow one -- battery lives at
+    # difficulty 4, where the world is small enough to absorb it, and difficulty 5 buys
+    # its hardness from more orders, tighter routing and two gated zones instead.
     table = {
-        1: GenParams(1, 7, 7, 2, 1, 3, (1, 2), 0, 0, False, 0, 0.25, 120),
+        1: GenParams(1, 7, 7, 2, 1, 3, (2, 2), 0, 0, False, 1, 0.25, 120),
         2: GenParams(2, 9, 9, 3, 1, 3, (2, 3), 1, 0, False, 1, 0.5, 160),
         3: GenParams(3, 11, 9, 3, 2, 2, (1, 2), 2, 0, False, 1, 0.7, 200),
         4: GenParams(4, 13, 11, 4, 2, 2, (1, 2), 3, 1, True, 1, 0.85, 260),
-        5: GenParams(5, 15, 13, 4, 3, 2, (1, 2), 4, 1, True, 2, 1.0, 320),
+        5: GenParams(5, 13, 11, 4, 3, 3, (1, 2), 4, 2, False, 1, 1.0, 320),
     }
     if d not in table:
         raise ValueError(f"difficulty must be 1..5, got {d}")
@@ -255,6 +263,13 @@ def generate(seed: int, difficulty: int, params: GenParams | None = None) -> Tas
     for _ in range(p.decoy_stock):
         s = rng.randrange(n_item)
         stock[s] += 1
+    # Every item SKU that has a shelf gets at least one unit. A shelf stocking zero units
+    # is dead scenery -- it clutters the grid and can never be interacted with. Stocking
+    # it instead turns each unordered SKU into a live hazard: the robot *can* pick it up,
+    # and packing it ruins the box.
+    for s in range(n_item):
+        if stock[s] == 0:
+            stock[s] = 1
     for k in range(n_keys):
         stock[n_item + k] = 1
 
