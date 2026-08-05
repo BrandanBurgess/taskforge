@@ -1,0 +1,23 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.DS_Store
+
+# training artifacts (kept out of git; regenerate with train.py)
+checkpoints/
+runs/
+*.zip
+*.pt
+*.pth
+tb_logs/
+
+# scratch
+scratch/
+*.tmp

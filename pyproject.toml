@@ -1,0 +1,59 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "taskforge"
+version = "0.1.0"
+description = "Provably-solvable grid-warehouse environments for agent RL and evaluation"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Brandan Burgess" }]
+keywords = [
+    "reinforcement-learning",
+    "gymnasium",
+    "llm-agents",
+    "synthetic-data",
+    "evals",
+    "planning",
+    "verification",
+]
+classifiers = [
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+dependencies = [
+    "pydantic>=2.9,<3",
+    "numpy>=1.26",
+    "gymnasium>=1.0,<2",
+    "matplotlib>=3.8",
+    "pygame-ce>=2.5",
+    "imageio>=2.34",
+    "pillow>=10.0",
+]
+
+[project.optional-dependencies]
+rl = ["stable-baselines3>=2.3", "torch>=2.2"]
+llm = ["anthropic>=0.40"]
+dev = ["pytest>=8.0", "ruff>=0.6"]
+
+[project.urls]
+Homepage = "https://github.com/BrandanBurgess/taskforge"
+
+[tool.setuptools]
+packages = ["taskforge", "taskforge.verify", "taskforge.worlds", "taskforge.worlds.warehouse", "taskforge.envs", "taskforge.generators", "harness"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+ignore = ["E501", "B008", "SIM108"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["ignore::DeprecationWarning"]
