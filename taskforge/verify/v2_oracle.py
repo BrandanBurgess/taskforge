@@ -19,7 +19,7 @@ from __future__ import annotations
 import heapq
 from collections import deque
 from dataclasses import dataclass, field
-from enum import Enum
+from enum import StrEnum
 from typing import Any
 
 from taskforge.dsl import Action, CanonState, TaskSpec, get_world
@@ -28,7 +28,7 @@ DEFAULT_NODE_BUDGET = 200_000
 DEFAULT_VSTAR_BUDGET = 250_000
 
 
-class OracleStatus(str, Enum):
+class OracleStatus(StrEnum):
     SOLVED = "solved"
     UNSOLVABLE = "unsolvable"  # search space exhausted with no goal found: a real proof
     BUDGET_EXHAUSTED = "budget_exhausted"  # unknown -> rejected

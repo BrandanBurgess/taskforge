@@ -544,11 +544,11 @@ def heuristic(ctx: WarehouseContext, state: State) -> int:
     if dispatched == ctx.all_dispatched:
         return 0
 
-    S, O = ctx.n_skus, ctx.n_orders
+    S, n_orders = ctx.n_skus, ctx.n_orders
     remaining = [0] * S
-    order_remaining = [0] * O
-    per_order = [[0] * S for _ in range(O)]
-    for o in range(O):
+    order_remaining = [0] * n_orders
+    per_order = [[0] * S for _ in range(n_orders)]
+    for o in range(n_orders):
         base = o * S
         for s in range(S):
             r = ctx.need[base + s] - filled[base + s]
@@ -561,9 +561,9 @@ def heuristic(ctx: WarehouseContext, state: State) -> int:
     to_pick = [max(0, remaining[s] - held[s]) for s in range(S)]
     picks = sum(to_pick)
     # Each order with outstanding need requires at least one more pack action.
-    packs = sum(1 for o in range(O) if order_remaining[o] > 0)
+    packs = sum(1 for o in range(n_orders) if order_remaining[o] > 0)
     # Each undispatched order requires exactly one scan.
-    scans = sum(1 for o in range(O) if not (dispatched >> o & 1))
+    scans = sum(1 for o in range(n_orders) if not (dispatched >> o & 1))
 
     # Each still-locked zone that solely gates a still-needed SKU costs >= 1 unlock.
     unlocks = 0
@@ -612,7 +612,7 @@ def heuristic(ctx: WarehouseContext, state: State) -> int:
         # the heuristic inadmissible -- which silently costs optimality, and is exactly
         # what tests/test_oracle.py::test_astar_matches_bfs_optimum exists to catch.
         legs = []
-        for o in range(O):
+        for o in range(n_orders):
             if order_remaining[o] <= 0:
                 continue
             cheapest = UNREACHABLE

@@ -1,0 +1,623 @@
+{
+  "certificate": {
+    "branching": 2.569,
+    "cost": 62,
+    "nodes_expanded": 9290,
+    "plan": [
+      [
+        "move",
+        "E"
+      ],
+      [
+        "move",
+        "E"
+      ],
+      [
+        "move",
+        "E"
+      ],
+      [
+        "move",
+        "E"
+      ],
+      [
+        "move",
+        "E"
+      ],
+      [
+        "move",
+        "E"
+      ],
+      [
+        "move",
+        "N"
+      ],
+      [
+        "move",
+        "N"
+      ],
+      [
+        "move",
+        "N"
+      ],
+      [
+        "move",
+        "N"
+      ],
+      [
+        "move",
+        "E"
+      ],
+      [
+        "move",
+        "N"
+      ],
+      [
+        "move",
+        "N"
+      ],
+      [
+        "move",
+        "W"
+      ],
+      [
+        "move",
+        "N"
+      ],
+      [
+        "pick",
+        2
+      ],
+      [
+        "pick",
+        1
+      ],
+      [
+        "move",
+        "S"
+      ],
+      [
+        "move",
+        "E"
+      ],
+      [
+        "move",
+        "E"
+      ],
+      [
+        "move",
+        "S"
+      ],
+      [
+        "move",
+        "S"
+      ],
+      [
+        "move",
+        "S"
+      ],
+      [
+        "move",
+        "S"
+      ],
+      [
+        "move",
+        "S"
+      ],
+      [
+        "move",
+        "S"
+      ],
+      [
+        "charge",
+        null
+      ],
+      [
+        "move",
+        "W"
+      ],
+      [
+        "move",
+        "W"
+      ],
+      [
+        "move",
+        "W"
+      ],
+      [
+        "move",
+        "W"
+      ],
+      [
+        "move",
+        "W"
+      ],
+      [
+        "pack",
+        0
+      ],
+      [
+        "move",
+        "E"
+      ],
+      [
+        "move",
+        "E"
+      ],
+      [
+        "move",
+        "E"
+      ],
+      [
+        "move",
+        "N"
+      ],
+      [
+        "move",
+        "N"
+      ],
+      [
+        "move",
+        "N"
+      ],
+      [
+        "move",
+        "N"
+      ],
+      [
+        "move",
+        "E"
+      ],
+      [
+        "move",
+        "N"
+      ],
+      [
+        "move",
+        "N"
+      ],
+      [
+        "move",
+        "W"
+      ],
+      [
+        "move",
+        "N"
+      ],
+      [
+        "pick",
+        2
+      ],
+      [
+        "move",
+        "S"
+      ],
+      [
+        "move",
+        "E"
+      ],
+      [
+        "move",
+        "S"
+      ],
+      [
+        "move",
+        "S"
+      ],
+      [
+        "move",
+        "W"
+      ],
+      [
+        "pick",
+        3
+      ],
+      [
+        "move",
+        "S"
+      ],
+      [
+        "move",
+        "S"
+      ],
+      [
+        "move",
+        "S"
+      ],
+      [
+        "move",
+        "S"
+      ],
+      [
+        "move",
+        "W"
+      ],
+      [
+        "move",
+        "W"
+      ],
+      [
+        "move",
+        "W"
+      ],
+      [
+        "pack",
+        1
+      ],
+      [
+        "scan",
+        0
+      ],
+      [
+        "scan",
+        1
+      ]
+    ],
+    "states_seen": 12682
+  },
+  "content_hash": "4e5ab8f701fa34b2",
+  "difficulty": {
+    "branching": 2.569,
+    "bucket": 4,
+    "plan_length": 62,
+    "scatter": 0.4028,
+    "score": 102.731
+  },
+  "spec": {
+    "constraints": {
+      "battery": 52,
+      "capacity": 2,
+      "irreversible": true,
+      "step_budget": 260
+    },
+    "goal": {
+      "args": {},
+      "kind": "all_orders_dispatched"
+    },
+    "metadata": {
+      "difficulty_target": 4,
+      "generator": "procedural",
+      "n_conveyors": 3,
+      "n_item_skus": 4,
+      "n_keycards": 1,
+      "n_zones": 1,
+      "scatter": 0.85
+    },
+    "payload": {
+      "battery_max": 52,
+      "height": 11,
+      "orders": [
+        {
+          "destination": "dock-A",
+          "need": [
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          "order_id": 0
+        },
+        {
+          "destination": "dock-B",
+          "need": [
+            0,
+            0,
+            1,
+            1,
+            0
+          ],
+          "order_id": 1
+        }
+      ],
+      "skus": [
+        "widget-A",
+        "gasket-B",
+        "coupler-C",
+        "bearing-D",
+        "keycard-1"
+      ],
+      "start": [
+        3,
+        9
+      ],
+      "stock": [
+        1,
+        1,
+        2,
+        1,
+        1
+      ],
+      "tiles": [
+        "#############",
+        "#C..........#",
+        "#.0#####2.1.#",
+        "#..........v#",
+        "#.#######3..#",
+        "#...........#",
+        "#.#######.#v#",
+        "#...........#",
+        "#.#######.4v#",
+        "#.....P....C#",
+        "#############"
+      ],
+      "width": 13,
+      "zone_keys": {
+        "1": 4
+      },
+      "zones": [
+        "0000000000000",
+        "0011000000000",
+        "0111000000000",
+        "0000000000000",
+        "0000000000000",
+        "0000000000000",
+        "0000000000000",
+        "0000000000000",
+        "0000000000000",
+        "0000000000000",
+        "0000000000000"
+      ]
+    },
+    "seed": 11,
+    "task_id": "wh-d4-s00011",
+    "tools": [
+      {
+        "cost": 1,
+        "effects": [
+          {
+            "args": [
+              "direction"
+            ],
+            "name": "position_changed"
+          }
+        ],
+        "name": "move",
+        "params": [
+          {
+            "name": "direction",
+            "type": "direction"
+          }
+        ],
+        "preconditions": [
+          {
+            "args": [
+              "direction"
+            ],
+            "name": "target_passable"
+          },
+          {
+            "args": [
+              "direction"
+            ],
+            "name": "conveyor_direction_respected"
+          },
+          {
+            "args": [
+              "direction"
+            ],
+            "name": "zone_unlocked"
+          },
+          {
+            "args": [],
+            "name": "has_battery"
+          }
+        ]
+      },
+      {
+        "cost": 1,
+        "effects": [
+          {
+            "args": [
+              "sku"
+            ],
+            "name": "held_gains_sku"
+          }
+        ],
+        "name": "pick",
+        "params": [
+          {
+            "name": "sku",
+            "type": "sku"
+          }
+        ],
+        "preconditions": [
+          {
+            "args": [
+              "sku"
+            ],
+            "name": "adjacent_to_shelf"
+          },
+          {
+            "args": [
+              "sku"
+            ],
+            "name": "shelf_has_stock"
+          },
+          {
+            "args": [],
+            "name": "under_capacity"
+          },
+          {
+            "args": [],
+            "name": "has_battery"
+          }
+        ]
+      },
+      {
+        "cost": 1,
+        "effects": [
+          {
+            "args": [
+              "sku"
+            ],
+            "name": "held_loses_sku"
+          }
+        ],
+        "name": "place",
+        "params": [
+          {
+            "name": "sku",
+            "type": "sku"
+          }
+        ],
+        "preconditions": [
+          {
+            "args": [
+              "sku"
+            ],
+            "name": "adjacent_to_shelf"
+          },
+          {
+            "args": [
+              "sku"
+            ],
+            "name": "holding_sku"
+          },
+          {
+            "args": [],
+            "name": "has_battery"
+          }
+        ]
+      },
+      {
+        "cost": 1,
+        "effects": [
+          {
+            "args": [
+              "order_id"
+            ],
+            "name": "order_fill_increases"
+          },
+          {
+            "args": [
+              "order_id"
+            ],
+            "name": "order_ruined_on_overfill"
+          },
+          {
+            "args": [],
+            "name": "held_emptied"
+          }
+        ],
+        "name": "pack",
+        "params": [
+          {
+            "name": "order_id",
+            "type": "order_id"
+          }
+        ],
+        "preconditions": [
+          {
+            "args": [],
+            "name": "at_pack_station"
+          },
+          {
+            "args": [
+              "order_id"
+            ],
+            "name": "order_open"
+          },
+          {
+            "args": [],
+            "name": "has_battery"
+          }
+        ]
+      },
+      {
+        "cost": 1,
+        "effects": [
+          {
+            "args": [
+              "order_id"
+            ],
+            "name": "order_dispatched"
+          }
+        ],
+        "name": "scan",
+        "params": [
+          {
+            "name": "order_id",
+            "type": "order_id"
+          }
+        ],
+        "preconditions": [
+          {
+            "args": [],
+            "name": "at_pack_station"
+          },
+          {
+            "args": [
+              "order_id"
+            ],
+            "name": "order_complete"
+          },
+          {
+            "args": [],
+            "name": "has_battery"
+          }
+        ]
+      },
+      {
+        "cost": 1,
+        "effects": [
+          {
+            "args": [],
+            "name": "battery_restored"
+          }
+        ],
+        "name": "charge",
+        "params": [],
+        "preconditions": [
+          {
+            "args": [],
+            "name": "at_charge_dock"
+          }
+        ]
+      },
+      {
+        "cost": 1,
+        "effects": [
+          {
+            "args": [
+              "zone_id"
+            ],
+            "name": "zone_becomes_unlocked"
+          },
+          {
+            "args": [
+              "keycard"
+            ],
+            "name": "held_loses_sku"
+          }
+        ],
+        "name": "unlock",
+        "params": [
+          {
+            "name": "zone_id",
+            "type": "zone_id"
+          }
+        ],
+        "preconditions": [
+          {
+            "args": [
+              "zone_id"
+            ],
+            "name": "holds_keycard"
+          },
+          {
+            "args": [
+              "zone_id"
+            ],
+            "name": "adjacent_to_zone"
+          },
+          {
+            "args": [],
+            "name": "has_battery"
+          }
+        ]
+      }
+    ],
+    "world": "warehouse"
+  }
+}

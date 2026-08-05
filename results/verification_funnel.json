@@ -1,0 +1,46 @@
+{
+  "generated_at_seed": 20260805,
+  "node_budget": 200000,
+  "arms": [
+    {
+      "arm": "curriculum",
+      "attempts": 60,
+      "v1_pass": 60,
+      "v2_pass": 60,
+      "v3_pass": 60,
+      "accepted": 60,
+      "accept_rate": 1.0,
+      "rejections": {
+        "V1": {},
+        "V2": {},
+        "V3": {}
+      },
+      "v2_v3_disagreements": [],
+      "v2_v3_agreement_rate": 1.0,
+      "seconds": 8.91
+    },
+    {
+      "arm": "wild",
+      "attempts": 300,
+      "v1_pass": 298,
+      "v2_pass": 267,
+      "v3_pass": 267,
+      "accepted": 267,
+      "accept_rate": 0.89,
+      "rejections": {
+        "V1": {
+          "missing_shelf": 2
+        },
+        "V2": {
+          "budget_exhausted": 4,
+          "unsolvable": 27
+        },
+        "V3": {}
+      },
+      "v2_v3_disagreements": [],
+      "v2_v3_agreement_rate": 1.0,
+      "seconds": 67.22
+    }
+  ],
+  "specs_committed": 60
+}

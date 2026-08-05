@@ -32,7 +32,7 @@ import pygame  # noqa: E402
 from harness.palette import LIGHT, Theme, hex_to_rgb, mix, ramp_color, sku_color  # noqa: E402
 from taskforge.dsl import TaskSpec  # noqa: E402
 from taskforge.worlds.warehouse import context_for, stock_of  # noqa: E402
-from taskforge.worlds.warehouse.spec import CONVEYORS, PACK, DOCK, SHELF_CHARS, WALL  # noqa: E402
+from taskforge.worlds.warehouse.spec import CONVEYORS, DOCK, PACK, SHELF_CHARS, WALL  # noqa: E402
 
 _INITIALISED = False
 

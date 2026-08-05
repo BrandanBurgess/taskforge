@@ -166,10 +166,9 @@ def register_world(pack: WorldPack) -> WorldPack:
 
 
 def get_world(name: str) -> WorldPack:
-    if name not in _REGISTRY:
+    if name not in _REGISTRY and name == "warehouse":
         # Import for side effects only on demand, so the core stays domain-agnostic.
-        if name == "warehouse":
-            import taskforge.worlds.warehouse  # noqa: F401
+        import taskforge.worlds.warehouse  # noqa: F401
     if name not in _REGISTRY:
         raise KeyError(f"unknown world pack {name!r}; registered: {sorted(_REGISTRY)}")
     return _REGISTRY[name]

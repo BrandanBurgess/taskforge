@@ -34,9 +34,7 @@ def mix(a: str, b: str, t: float) -> str:
     invent a new categorical hue."""
     ar, ag, ab = hex_to_rgb(a)
     br, bg, bb = hex_to_rgb(b)
-    return "#{:02x}{:02x}{:02x}".format(
-        round(ar + (br - ar) * t), round(ag + (bg - ag) * t), round(ab + (bb - ab) * t)
-    )
+    return f"#{round(ar + (br - ar) * t):02x}{round(ag + (bg - ag) * t):02x}{round(ab + (bb - ab) * t):02x}"
 
 
 @dataclass(frozen=True)

@@ -1,0 +1,800 @@
+{
+  "certificate": {
+    "branching": 2.27,
+    "cost": 102,
+    "nodes_expanded": 34292,
+    "plan": [
+      [
+        "move",
+        "W"
+      ],
+      [
+        "move",
+        "W"
+      ],
+      [
+        "move",
+        "W"
+      ],
+      [
+        "move",
+        "N"
+      ],
+      [
+        "move",
+        "N"
+      ],
+      [
+        "move",
+        "W"
+      ],
+      [
+        "move",
+        "W"
+      ],
+      [
+        "move",
+        "W"
+      ],
+      [
+        "move",
+        "W"
+      ],
+      [
+        "move",
+        "N"
+      ],
+      [
+        "move",
+        "N"
+      ],
+      [
+        "move",
+        "N"
+      ],
+      [
+        "move",
+        "N"
+      ],
+      [
+        "move",
+        "E"
+      ],
+      [
+        "move",
+        "E"
+      ],
+      [
+        "move",
+        "E"
+      ],
+      [
+        "move",
+        "E"
+      ],
+      [
+        "move",
+        "E"
+      ],
+      [
+        "move",
+        "E"
+      ],
+      [
+        "pick",
+        0
+      ],
+      [
+        "move",
+        "E"
+      ],
+      [
+        "pick",
+        2
+      ],
+      [
+        "move",
+        "E"
+      ],
+      [
+        "move",
+        "S"
+      ],
+      [
+        "move",
+        "S"
+      ],
+      [
+        "move",
+        "S"
+      ],
+      [
+        "move",
+        "S"
+      ],
+      [
+        "move",
+        "S"
+      ],
+      [
+        "move",
+        "S"
+      ],
+      [
+        "move",
+        "W"
+      ],
+      [
+        "move",
+        "W"
+      ],
+      [
+        "move",
+        "W"
+      ],
+      [
+        "move",
+        "W"
+      ],
+      [
+        "move",
+        "W"
+      ],
+      [
+        "pack",
+        2
+      ],
+      [
+        "move",
+        "E"
+      ],
+      [
+        "move",
+        "N"
+      ],
+      [
+        "move",
+        "N"
+      ],
+      [
+        "move",
+        "W"
+      ],
+      [
+        "move",
+        "W"
+      ],
+      [
+        "move",
+        "W"
+      ],
+      [
+        "move",
+        "W"
+      ],
+      [
+        "move",
+        "N"
+      ],
+      [
+        "move",
+        "N"
+      ],
+      [
+        "move",
+        "N"
+      ],
+      [
+        "move",
+        "N"
+      ],
+      [
+        "move",
+        "E"
+      ],
+      [
+        "move",
+        "E"
+      ],
+      [
+        "move",
+        "E"
+      ],
+      [
+        "move",
+        "E"
+      ],
+      [
+        "move",
+        "E"
+      ],
+      [
+        "move",
+        "E"
+      ],
+      [
+        "pick",
+        0
+      ],
+      [
+        "move",
+        "E"
+      ],
+      [
+        "move",
+        "E"
+      ],
+      [
+        "move",
+        "S"
+      ],
+      [
+        "move",
+        "S"
+      ],
+      [
+        "move",
+        "S"
+      ],
+      [
+        "move",
+        "S"
+      ],
+      [
+        "move",
+        "S"
+      ],
+      [
+        "move",
+        "S"
+      ],
+      [
+        "move",
+        "W"
+      ],
+      [
+        "move",
+        "W"
+      ],
+      [
+        "move",
+        "W"
+      ],
+      [
+        "move",
+        "W"
+      ],
+      [
+        "move",
+        "W"
+      ],
+      [
+        "pack",
+        1
+      ],
+      [
+        "move",
+        "E"
+      ],
+      [
+        "move",
+        "N"
+      ],
+      [
+        "move",
+        "N"
+      ],
+      [
+        "move",
+        "W"
+      ],
+      [
+        "move",
+        "W"
+      ],
+      [
+        "move",
+        "W"
+      ],
+      [
+        "move",
+        "W"
+      ],
+      [
+        "move",
+        "N"
+      ],
+      [
+        "move",
+        "N"
+      ],
+      [
+        "move",
+        "N"
+      ],
+      [
+        "move",
+        "N"
+      ],
+      [
+        "move",
+        "E"
+      ],
+      [
+        "move",
+        "E"
+      ],
+      [
+        "move",
+        "E"
+      ],
+      [
+        "move",
+        "E"
+      ],
+      [
+        "move",
+        "E"
+      ],
+      [
+        "move",
+        "E"
+      ],
+      [
+        "pick",
+        0
+      ],
+      [
+        "move",
+        "E"
+      ],
+      [
+        "move",
+        "E"
+      ],
+      [
+        "move",
+        "S"
+      ],
+      [
+        "move",
+        "S"
+      ],
+      [
+        "move",
+        "S"
+      ],
+      [
+        "move",
+        "S"
+      ],
+      [
+        "move",
+        "S"
+      ],
+      [
+        "move",
+        "S"
+      ],
+      [
+        "move",
+        "W"
+      ],
+      [
+        "move",
+        "W"
+      ],
+      [
+        "move",
+        "W"
+      ],
+      [
+        "move",
+        "W"
+      ],
+      [
+        "move",
+        "W"
+      ],
+      [
+        "pack",
+        0
+      ],
+      [
+        "scan",
+        0
+      ],
+      [
+        "scan",
+        1
+      ],
+      [
+        "scan",
+        2
+      ]
+    ],
+    "states_seen": 30540
+  },
+  "content_hash": "22a5f36a87f43bd9",
+  "difficulty": {
+    "branching": 2.27,
+    "bucket": 5,
+    "plan_length": 102,
+    "scatter": 0.4792,
+    "score": 170.726
+  },
+  "spec": {
+    "constraints": {
+      "battery": null,
+      "capacity": 3,
+      "irreversible": true,
+      "step_budget": 320
+    },
+    "goal": {
+      "args": {},
+      "kind": "all_orders_dispatched"
+    },
+    "metadata": {
+      "difficulty_target": 5,
+      "generator": "procedural",
+      "n_conveyors": 4,
+      "n_item_skus": 4,
+      "n_keycards": 2,
+      "n_zones": 2,
+      "scatter": 1.0
+    },
+    "payload": {
+      "battery_max": null,
+      "height": 11,
+      "orders": [
+        {
+          "destination": "dock-A",
+          "need": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "order_id": 0
+        },
+        {
+          "destination": "dock-B",
+          "need": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "order_id": 1
+        },
+        {
+          "destination": "dock-C",
+          "need": [
+            1,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          "order_id": 2
+        }
+      ],
+      "skus": [
+        "widget-A",
+        "gasket-B",
+        "coupler-C",
+        "bearing-D",
+        "keycard-1",
+        "keycard-2"
+      ],
+      "start": [
+        10,
+        9
+      ],
+      "stock": [
+        3,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tiles": [
+        "#############",
+        "#...........#",
+        "#..13####0#.#",
+        "#..........v#",
+        "#.#.#4####2v#",
+        "#..........v#",
+        "#.#.#######.#",
+        "#..........v#",
+        "#.#####.##5.#",
+        "#.....P.....#",
+        "#############"
+      ],
+      "width": 13,
+      "zone_keys": {
+        "1": 4,
+        "2": 5
+      },
+      "zones": [
+        "0000000000000",
+        "0111000002220",
+        "0111000002220",
+        "0000000000000",
+        "0000000000000",
+        "0000000000000",
+        "0000000000000",
+        "0000000000000",
+        "0000000000000",
+        "0000000000000",
+        "0000000000000"
+      ]
+    },
+    "seed": 2,
+    "task_id": "wh-d5-s00002",
+    "tools": [
+      {
+        "cost": 1,
+        "effects": [
+          {
+            "args": [
+              "direction"
+            ],
+            "name": "position_changed"
+          }
+        ],
+        "name": "move",
+        "params": [
+          {
+            "name": "direction",
+            "type": "direction"
+          }
+        ],
+        "preconditions": [
+          {
+            "args": [
+              "direction"
+            ],
+            "name": "target_passable"
+          },
+          {
+            "args": [
+              "direction"
+            ],
+            "name": "conveyor_direction_respected"
+          },
+          {
+            "args": [
+              "direction"
+            ],
+            "name": "zone_unlocked"
+          },
+          {
+            "args": [],
+            "name": "has_battery"
+          }
+        ]
+      },
+      {
+        "cost": 1,
+        "effects": [
+          {
+            "args": [
+              "sku"
+            ],
+            "name": "held_gains_sku"
+          }
+        ],
+        "name": "pick",
+        "params": [
+          {
+            "name": "sku",
+            "type": "sku"
+          }
+        ],
+        "preconditions": [
+          {
+            "args": [
+              "sku"
+            ],
+            "name": "adjacent_to_shelf"
+          },
+          {
+            "args": [
+              "sku"
+            ],
+            "name": "shelf_has_stock"
+          },
+          {
+            "args": [],
+            "name": "under_capacity"
+          },
+          {
+            "args": [],
+            "name": "has_battery"
+          }
+        ]
+      },
+      {
+        "cost": 1,
+        "effects": [
+          {
+            "args": [
+              "sku"
+            ],
+            "name": "held_loses_sku"
+          }
+        ],
+        "name": "place",
+        "params": [
+          {
+            "name": "sku",
+            "type": "sku"
+          }
+        ],
+        "preconditions": [
+          {
+            "args": [
+              "sku"
+            ],
+            "name": "adjacent_to_shelf"
+          },
+          {
+            "args": [
+              "sku"
+            ],
+            "name": "holding_sku"
+          },
+          {
+            "args": [],
+            "name": "has_battery"
+          }
+        ]
+      },
+      {
+        "cost": 1,
+        "effects": [
+          {
+            "args": [
+              "order_id"
+            ],
+            "name": "order_fill_increases"
+          },
+          {
+            "args": [
+              "order_id"
+            ],
+            "name": "order_ruined_on_overfill"
+          },
+          {
+            "args": [],
+            "name": "held_emptied"
+          }
+        ],
+        "name": "pack",
+        "params": [
+          {
+            "name": "order_id",
+            "type": "order_id"
+          }
+        ],
+        "preconditions": [
+          {
+            "args": [],
+            "name": "at_pack_station"
+          },
+          {
+            "args": [
+              "order_id"
+            ],
+            "name": "order_open"
+          },
+          {
+            "args": [],
+            "name": "has_battery"
+          }
+        ]
+      },
+      {
+        "cost": 1,
+        "effects": [
+          {
+            "args": [
+              "order_id"
+            ],
+            "name": "order_dispatched"
+          }
+        ],
+        "name": "scan",
+        "params": [
+          {
+            "name": "order_id",
+            "type": "order_id"
+          }
+        ],
+        "preconditions": [
+          {
+            "args": [],
+            "name": "at_pack_station"
+          },
+          {
+            "args": [
+              "order_id"
+            ],
+            "name": "order_complete"
+          },
+          {
+            "args": [],
+            "name": "has_battery"
+          }
+        ]
+      },
+      {
+        "cost": 1,
+        "effects": [
+          {
+            "args": [],
+            "name": "battery_restored"
+          }
+        ],
+        "name": "charge",
+        "params": [],
+        "preconditions": [
+          {
+            "args": [],
+            "name": "at_charge_dock"
+          }
+        ]
+      },
+      {
+        "cost": 1,
+        "effects": [
+          {
+            "args": [
+              "zone_id"
+            ],
+            "name": "zone_becomes_unlocked"
+          },
+          {
+            "args": [
+              "keycard"
+            ],
+            "name": "held_loses_sku"
+          }
+        ],
+        "name": "unlock",
+        "params": [
+          {
+            "name": "zone_id",
+            "type": "zone_id"
+          }
+        ],
+        "preconditions": [
+          {
+            "args": [
+              "zone_id"
+            ],
+            "name": "holds_keycard"
+          },
+          {
+            "args": [
+              "zone_id"
+            ],
+            "name": "adjacent_to_zone"
+          },
+          {
+            "args": [],
+            "name": "has_battery"
+          }
+        ]
+      }
+    ],
+    "world": "warehouse"
+  }
+}

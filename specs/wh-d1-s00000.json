@@ -1,0 +1,377 @@
+{
+  "certificate": {
+    "branching": 3.643,
+    "cost": 8,
+    "nodes_expanded": 14,
+    "plan": [
+      [
+        "move",
+        "E"
+      ],
+      [
+        "pick",
+        1
+      ],
+      [
+        "pick",
+        0
+      ],
+      [
+        "move",
+        "W"
+      ],
+      [
+        "move",
+        "S"
+      ],
+      [
+        "move",
+        "S"
+      ],
+      [
+        "pack",
+        0
+      ],
+      [
+        "scan",
+        0
+      ]
+    ],
+    "states_seen": 35
+  },
+  "content_hash": "d816ba95e3c906b4",
+  "difficulty": {
+    "branching": 3.643,
+    "bucket": 1,
+    "plan_length": 8,
+    "scatter": 0.1429,
+    "score": 11.391
+  },
+  "spec": {
+    "constraints": {
+      "battery": null,
+      "capacity": 3,
+      "irreversible": true,
+      "step_budget": 120
+    },
+    "goal": {
+      "args": {},
+      "kind": "all_orders_dispatched"
+    },
+    "metadata": {
+      "difficulty_target": 1,
+      "generator": "procedural",
+      "n_conveyors": 0,
+      "n_item_skus": 2,
+      "n_keycards": 0,
+      "n_zones": 0,
+      "scatter": 0.25
+    },
+    "payload": {
+      "battery_max": null,
+      "height": 7,
+      "orders": [
+        {
+          "destination": "dock-A",
+          "need": [
+            1,
+            1
+          ],
+          "order_id": 0
+        }
+      ],
+      "skus": [
+        "widget-A",
+        "gasket-B"
+      ],
+      "start": [
+        3,
+        3
+      ],
+      "stock": [
+        2,
+        1
+      ],
+      "tiles": [
+        "#######",
+        "#.....#",
+        "#.#.0.#",
+        "#.....#",
+        "#.#.1.#",
+        "#..P..#",
+        "#######"
+      ],
+      "width": 7,
+      "zone_keys": {},
+      "zones": [
+        "0000000",
+        "0000000",
+        "0000000",
+        "0000000",
+        "0000000",
+        "0000000",
+        "0000000"
+      ]
+    },
+    "seed": 0,
+    "task_id": "wh-d1-s00000",
+    "tools": [
+      {
+        "cost": 1,
+        "effects": [
+          {
+            "args": [
+              "direction"
+            ],
+            "name": "position_changed"
+          }
+        ],
+        "name": "move",
+        "params": [
+          {
+            "name": "direction",
+            "type": "direction"
+          }
+        ],
+        "preconditions": [
+          {
+            "args": [
+              "direction"
+            ],
+            "name": "target_passable"
+          },
+          {
+            "args": [
+              "direction"
+            ],
+            "name": "conveyor_direction_respected"
+          },
+          {
+            "args": [
+              "direction"
+            ],
+            "name": "zone_unlocked"
+          },
+          {
+            "args": [],
+            "name": "has_battery"
+          }
+        ]
+      },
+      {
+        "cost": 1,
+        "effects": [
+          {
+            "args": [
+              "sku"
+            ],
+            "name": "held_gains_sku"
+          }
+        ],
+        "name": "pick",
+        "params": [
+          {
+            "name": "sku",
+            "type": "sku"
+          }
+        ],
+        "preconditions": [
+          {
+            "args": [
+              "sku"
+            ],
+            "name": "adjacent_to_shelf"
+          },
+          {
+            "args": [
+              "sku"
+            ],
+            "name": "shelf_has_stock"
+          },
+          {
+            "args": [],
+            "name": "under_capacity"
+          },
+          {
+            "args": [],
+            "name": "has_battery"
+          }
+        ]
+      },
+      {
+        "cost": 1,
+        "effects": [
+          {
+            "args": [
+              "sku"
+            ],
+            "name": "held_loses_sku"
+          }
+        ],
+        "name": "place",
+        "params": [
+          {
+            "name": "sku",
+            "type": "sku"
+          }
+        ],
+        "preconditions": [
+          {
+            "args": [
+              "sku"
+            ],
+            "name": "adjacent_to_shelf"
+          },
+          {
+            "args": [
+              "sku"
+            ],
+            "name": "holding_sku"
+          },
+          {
+            "args": [],
+            "name": "has_battery"
+          }
+        ]
+      },
+      {
+        "cost": 1,
+        "effects": [
+          {
+            "args": [
+              "order_id"
+            ],
+            "name": "order_fill_increases"
+          },
+          {
+            "args": [
+              "order_id"
+            ],
+            "name": "order_ruined_on_overfill"
+          },
+          {
+            "args": [],
+            "name": "held_emptied"
+          }
+        ],
+        "name": "pack",
+        "params": [
+          {
+            "name": "order_id",
+            "type": "order_id"
+          }
+        ],
+        "preconditions": [
+          {
+            "args": [],
+            "name": "at_pack_station"
+          },
+          {
+            "args": [
+              "order_id"
+            ],
+            "name": "order_open"
+          },
+          {
+            "args": [],
+            "name": "has_battery"
+          }
+        ]
+      },
+      {
+        "cost": 1,
+        "effects": [
+          {
+            "args": [
+              "order_id"
+            ],
+            "name": "order_dispatched"
+          }
+        ],
+        "name": "scan",
+        "params": [
+          {
+            "name": "order_id",
+            "type": "order_id"
+          }
+        ],
+        "preconditions": [
+          {
+            "args": [],
+            "name": "at_pack_station"
+          },
+          {
+            "args": [
+              "order_id"
+            ],
+            "name": "order_complete"
+          },
+          {
+            "args": [],
+            "name": "has_battery"
+          }
+        ]
+      },
+      {
+        "cost": 1,
+        "effects": [
+          {
+            "args": [],
+            "name": "battery_restored"
+          }
+        ],
+        "name": "charge",
+        "params": [],
+        "preconditions": [
+          {
+            "args": [],
+            "name": "at_charge_dock"
+          }
+        ]
+      },
+      {
+        "cost": 1,
+        "effects": [
+          {
+            "args": [
+              "zone_id"
+            ],
+            "name": "zone_becomes_unlocked"
+          },
+          {
+            "args": [
+              "keycard"
+            ],
+            "name": "held_loses_sku"
+          }
+        ],
+        "name": "unlock",
+        "params": [
+          {
+            "name": "zone_id",
+            "type": "zone_id"
+          }
+        ],
+        "preconditions": [
+          {
+            "args": [
+              "zone_id"
+            ],
+            "name": "holds_keycard"
+          },
+          {
+            "args": [
+              "zone_id"
+            ],
+            "name": "adjacent_to_zone"
+          },
+          {
+            "args": [],
+            "name": "has_battery"
+          }
+        ]
+      }
+    ],
+    "world": "warehouse"
+  }
+}

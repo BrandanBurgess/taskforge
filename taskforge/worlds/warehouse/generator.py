@@ -79,6 +79,46 @@ def params_for_difficulty(d: int) -> GenParams:
     return table[d]
 
 
+def random_params(rng: random.Random) -> GenParams:
+    """Unconstrained parameter draw, used for the "wild" generation arm.
+
+    The tuned curriculum above is deliberately safe -- it accepts essentially every
+    seed, which makes it useless for measuring a verification funnel. This arm samples
+    knobs freely, including combinations that produce genuinely unsolvable or malformed
+    worlds (too little stock, conveyors that strand the robot, batteries that cannot
+    reach a dock, zones with no reachable keycard). Those rejections are the point: a
+    funnel where nothing is ever rejected measures nothing.
+    """
+    w = rng.randrange(7, 15)
+    h = rng.randrange(7, 13)
+    n_item = rng.randint(1, 4)
+    n_zones = rng.choice([0, 0, 1, 1, 2])
+    n_zones = min(n_zones, max(0, MAX_ITEM_PLUS_KEYS - n_item))
+    battery = rng.random() < 0.35
+    return GenParams(
+        difficulty=0,
+        width=w,
+        height=h,
+        n_item_skus=n_item,
+        n_orders=rng.randint(1, 3),
+        capacity=rng.randint(1, 3),
+        units_per_order=(1, rng.randint(1, 3)),
+        n_conveyors=rng.randrange(0, 9),
+        n_zones=n_zones,
+        battery=battery,
+        decoy_stock=rng.randrange(0, 3),
+        scatter=rng.random(),
+        step_budget=rng.choice([60, 90, 140, 220, 320]),
+        # Tightness below ~1.0 produces batteries that genuinely cannot complete the job,
+        # and short step budgets produce tasks that are solvable in principle but not
+        # within the budget the spec declares. Both are rejections we want to see.
+        extras={"arm": "wild", "battery_tightness": rng.uniform(0.55, 2.4)},
+    )
+
+
+MAX_ITEM_PLUS_KEYS = 6
+
+
 # --------------------------------------------------------------------------------------
 
 
@@ -313,8 +353,9 @@ def generate(seed: int, difficulty: int, params: GenParams | None = None) -> Tas
 
 def _battery_budget(p: GenParams, w: int, h: int) -> int:
     """Generous enough that charging is a routing consideration, tight enough that
-    ignoring it can strand the robot."""
-    return int((w + h) * 2.2)
+    ignoring it can strand the robot. The wild arm varies the tightness so that some
+    draws are genuinely unsurvivable -- and get rejected."""
+    return max(6, int((w + h) * p.extras.get("battery_tightness", 2.2)))
 
 
 def _degenerate(seed: int, difficulty: int, p: GenParams) -> TaskSpec:
