@@ -157,7 +157,9 @@ def main() -> None:
     agents = [("oracle", OracleAgent()), ("greedy", GreedyAgent(seed=7)),
               ("random", RandomAgent(seed=7))]
     if model is not None:
-        agents.insert(1, ("ppo (demo run)", PolicyAgent(model)))
+        # Label the row with its budget: a smoke run trains for 8k steps and will score
+        # ~0, which is a property of the budget, not of the method.
+        agents.insert(1, (f"ppo ({steps // 1000}k-step demo run)", PolicyAgent(model)))
     llm = LLMAgent()
     agents.append(("scripted (LLM fallback)" if not llm.available() else "llm", llm))
 

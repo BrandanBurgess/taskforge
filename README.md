@@ -178,7 +178,7 @@ The label is derived entirely from the oracle's search statistics — no agent w
 <p align="center"><img src="docs/img/learning_curves.png" alt="Success rate against environment steps for PPO under sparse and shaped reward, three seeds each, with min-max bands, plus horizontal reference lines for the greedy and random baselines." width="100%"></p>
 
 ```bash
-python train.py --steps 450000 --seeds 3 --reward both \
+python train.py --steps 600000 --seeds 3 --reward both \
   --train-buckets 1,2 --eval-buckets 1,2 --holdout-buckets 3,4   # results/rl_training.json
 ```
 
