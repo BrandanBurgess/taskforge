@@ -174,6 +174,14 @@ This is the result a normal gridworld cannot give you. Packing a SKU an order do
 
 The gap between 0.0% and 38.3% is the whole point: the difference between those two agents is 12% noise, and the cost of that noise is measurable to the episode because the oracle can decide deadness.
 
+Broken out by difficulty, the scripted agent's irreversible-failure rate is not flat at all:
+
+| bucket | D1 | D2 | D3 | D4 | D5 |
+|---|---|---|---|---|---|
+| scripted agent ruins a box | 0.00 | 0.00 | **0.82** | 0.62 | 0.46 |
+
+Nothing about the agent changes across those columns — the *tasks* change. D1 and D2 have few surplus SKUs within reach, so a random slip usually costs a detour; from D3 on there are decoys, keycards and multiple orders in play, and the same slip destroys the box. The fall from 0.82 to 0.46 at D5 is not the agent getting safer: it is the agent increasingly running out of step budget before it ever reaches the packing station, which is a reminder to read a failure-mode rate alongside its success rate rather than on its own.
+
 ### Difficulty calibration
 
 <p align="center"><img src="docs/img/difficulty_calibration.png" alt="Scatter of the oracle-derived difficulty score against pooled agent success rate, with a fitted line, r = -0.71; alongside a bar chart of mean success per difficulty bucket falling monotonically from 0.58 to 0.00." width="100%"></p>
