@@ -70,6 +70,10 @@ flowchart LR
 
 **V1 — schema and well-formedness.** Pydantic validation, plus checks the type system cannot express: every declared tool precondition names a predicate the world actually implements; every SKU has exactly one shelf cell with a walkable neighbour; stock covers what the orders require; every locked zone has a keycard that is reachable and not itself orderable; no conveyor points into a wall.
 
+Fifteen distinct rejection codes, each of which becomes a repair instruction for the LLM generator rather than a bare "invalid":
+
+`bad_keycard` · `conveyor_trap` · `duplicate_tool` · `empty_goal` · `key_behind_own_lock` · `missing_shelf` · `no_tools` · `orderable_keycard` · `pack_locked` · `start_blocked` · `start_locked` · `unknown_goal` · `unknown_predicate` · `unreachable_shelf` · `zone_without_key`
+
 **V2 — the solvability oracle.** A\* over the canonical symbolic state to the goal predicate, with a domain heuristic and an explicit node budget (200,000 by default). **Conservative rejection**: budget exhausted means *rejected*, never accepted-on-unknown. When budgets started biting we shrank the worlds rather than raising the ceiling — a picky verifier is fine, a slow one is not.
 
 **V3 — execution replay.** The certificate is run back through the executor step by step, asserting each precondition and the goal predicate at the end. This looks redundant, because V2's successor function is built from the same executor. That is exactly why it is there: the classic silent bug in a setup like this is an oracle that searches a subtly different world than the one the agent acts in, and a V2/V3 disagreement is the only place that shows up. Any disagreement is a **P0 bug, not a rejected task**, and the pipeline counts it separately so it can never be mistaken for one.
