@@ -122,7 +122,9 @@ def main() -> None:
     print(f"   rendered in {time.time() - t0:.1f}s")
 
     # ---------------------------------------------------------------- 5. train
-    tasks = load_specs(ROOT / "specs", buckets=(1, 2, 3)) or [task]
+    # Buckets 1-2, matching the committed multi-seed configuration in results/. The
+    # demo is a scaled-down version of the real run, not a different experiment.
+    tasks = load_specs(ROOT / "specs", buckets=(1, 2)) or [task]
     model = None
     if not args.skip_train:
         rule("5. Short PPO run (CPU)")

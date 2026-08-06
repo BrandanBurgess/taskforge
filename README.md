@@ -359,6 +359,7 @@ Read this section before quoting any number above.
 - **LLM-generator statistics do not exist.** No API key was available. The path is implemented and unit-tested against a mock; it has never been run at scale.
 - **The "LLM agent" row in the eval table is a scripted fallback** (greedy + 12% random actions) and is labelled as such everywhere, including in `results/agent_eval.json` via `used_llm: false`. It exercises the harness offline; it is not a measurement of any language model.
 - **Difficulty calibration pools four non-oracle agents over 60 tasks.** r = −0.789 is a real correlation on a small, self-generated corpus, not a validated psychometric instrument.
+- **The RL experiment trains and evaluates on 23 tasks in buckets 1–2.** That is a small corpus by any standard, the evaluation set is the training set (held-out numbers are reported separately and are bad), and three seeds is the minimum that makes a variance claim at all rather than a comfortable margin.
 - **Single machine, single hardware profile.** All timings are 8 GB M1, CPU only.
 
 ---
@@ -402,7 +403,8 @@ CI runs install, `ruff`, `pytest`, spec re-verification and `demo.py --smoke` on
 
 - Only one world pack ships. The `WorldPack` boundary is designed for a second one but is unproven until there is one — a kitchen or a circuit-assembly domain would be the honest test of whether the abstraction holds.
 - The oracle is single-agent and fully observable. Partial observability would break the exactness of V\* and force a different verification story.
-- Sparse-reward learning is the weakest result here and deserves a proper exploration method (count-based bonuses, or curriculum-by-difficulty using the label this repo already computes) rather than more steps.
+- Sparse-reward learning is the weakest result here, and the failure mode is specifically *bimodality across seeds* rather than a low mean — two of three seeds never found the goal at all. That is an exploration problem, so the fix is an exploration method (count-based bonuses, or curriculum-by-difficulty using the label this repo already computes), not more steps.
+- The generalization experiment confounds "did not generalize" with "the held-out tasks are harder for everything". A difficulty-matched, layout-different holdout would separate them, and the MAP-Elites archive is the natural place to cut one.
 - The LLM generator needs a real benchmark run before its accept rate and repair histogram mean anything.
 - MAP-Elites uses plan length as the within-cell fitness. A diversity-aware fitness would probably fill the sparse corners of the archive faster.
 
