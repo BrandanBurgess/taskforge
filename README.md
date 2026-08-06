@@ -2,7 +2,7 @@
 
 **Grid-warehouse environments where solvability is a proof, not a hope — and the proof is worth more than the task.**
 
-Synthetic agent data is only useful if it is verified. `taskforge` generates warehouse fulfillment tasks and refuses to emit one until an A\* oracle has produced an optimal plan for it and that plan has been replayed through the real executor. The same search that certifies a task also yields its reward function, its difficulty label, its curriculum slot, and its ground-truth grader — so the certificate is reused four times downstream rather than thrown away.
+Synthetic agent data is only useful if it is verified. `taskforge` generates warehouse fulfillment tasks and refuses to emit one until an A\* oracle has produced an optimal plan for it and that plan has been replayed through the real executor. The same search that certifies a task also yields its reward function, its difficulty label, its curriculum slot, and its ground-truth grader — so the certificate is reused five times downstream rather than thrown away.
 
 <p align="center">
   <img src="docs/img/hero.gif" alt="The oracle's certificate plan executing on a difficulty-3 warehouse task, with a live order manifest, held items, and a step counter measured against the proven optimum." width="100%">
@@ -63,6 +63,7 @@ flowchart LR
   V3 --> C["<b>Certificate</b><br/><small>optimal plan + V* table</small>"]
   C --> S["reward shaping<br/><small>Φ = −V*</small>"]
   C --> D["difficulty label"]
+  C --> U["curriculum<br/><small>sample by difficulty</small>"]
   C --> W["replay witness<br/><small>plan + GIF</small>"]
   C --> E["ground-truth grader"]
 ```
@@ -217,10 +218,11 @@ The argument of this project is that the expensive part of generating a verified
 |---|---|---|
 | **Reward shaping** | Φ(s) = −V\*(s) from the exact cost-to-go table | learning curves |
 | **Difficulty label** | plan length × SKU scatter × branching, calibrated | r = −0.708 |
+| **Curriculum** | tasks sampled by difficulty bucket; train easy, hold out hard | the generalization result |
 | **Replay witness** | every accepted task ships its certificate plan + GIF | `specs/*.json`, hero GIF, HTML replay |
 | **Ground-truth grader** | every agent scored by the same goal predicate | the eval table |
 
-A fifth one fell out during the build: the certificate length also sets a sensible **training episode horizon**. A task with an 8-step optimum was burning 120-step episodes, so a fixed sample budget bought 15× fewer episodes than it should have. Truncating training episodes at 3× the certificate length fixed it. Evaluation always uses the full certified step budget, so no agent is judged on a horizon the task was not certified against.
+A further one fell out during the build: the certificate length also sets a sensible **training episode horizon**. A task with an 8-step optimum was burning 120-step episodes, so a fixed sample budget bought 15× fewer episodes than it should have. Truncating training episodes at 3× the certificate length fixed it. Evaluation always uses the full certified step budget, so no agent is judged on a horizon the task was not certified against.
 
 ### Why potential-based shaping is safe, precisely
 
