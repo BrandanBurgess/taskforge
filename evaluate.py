@@ -117,10 +117,14 @@ def main() -> None:
     if args.model and Path(args.model).exists():
         from sb3_contrib import MaskablePPO
 
-        model = MaskablePPO.load(args.model, device="cpu")
-        res = run_agent(tasks, PolicyAgent(model, name="ppo"), args.episodes)
-        reports["ppo"] = summarize(res, "ppo")
-        print(f"  {'ppo':8s} pass@1 {reports['ppo']['overall']['pass_at_1']:.3f}")
+        try:
+            model = MaskablePPO.load(args.model, device="cpu")
+        except Exception as e:
+            print(f"  ! could not load {args.model}: {e}; skipping the PPO row")
+        else:
+            res = run_agent(tasks, PolicyAgent(model, name="ppo"), args.episodes)
+            reports["ppo"] = summarize(res, "ppo")
+            print(f"  {'ppo':8s} pass@1 {reports['ppo']['overall']['pass_at_1']:.3f}")
 
     llm = LLMAgent()
     llm_tasks = tasks if not args.llm_tasks else tasks[: args.llm_tasks]

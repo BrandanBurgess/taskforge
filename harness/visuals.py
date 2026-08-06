@@ -177,9 +177,15 @@ def build_three_way(task, model_path: str | None = None, theme: Theme = LIGHT, c
     if model_path and Path(model_path).exists():
         from sb3_contrib import MaskablePPO
 
-        model = MaskablePPO.load(model_path, device="cpu")
-        f, n, _ = render_agent_episode(task, PolicyAgent(model), theme, cell, "PPO agent")
-        panes.append(("ppo", f))
+        try:
+            model = MaskablePPO.load(model_path, device="cpu")
+        except Exception as e:
+            # A checkpoint left over from a different algorithm should degrade the
+            # figure to two panes, not abort the whole visual build.
+            print(f"  ! skipping PPO pane: {model_path} did not load ({e})")
+        else:
+            f, n, _ = render_agent_episode(task, PolicyAgent(model), theme, cell, "PPO agent")
+            panes.append(("ppo", f))
 
     llm = LLMAgent()
     label = "LLM agent" if llm.available() else "Scripted agent (no API key)"
