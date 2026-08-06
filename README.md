@@ -109,7 +109,9 @@ The two arms exist because a funnel where nothing is ever rejected measures noth
 
 ### V2/V3 agreement
 
-**100.00%** across all 327 certified plans (60 curriculum + 267 wild), plus 418 mutation-engine acceptances. Zero disagreements. This is the number I would want a reviewer to check first, and `scripts/check_specs.py` re-runs it against every committed spec in CI.
+**100.00% across 745 certified plans** — 327 from the two generator arms (60 curriculum + 267 wild) plus 418 from the mutation engine. Zero disagreements: every plan V2 certified as optimal was replayed by V3 through the executor and reached the goal at exactly the certified length.
+
+This is the number I would want a reviewer to check first, because it is the one that would expose the whole thing if it were wrong. `scripts/check_specs.py` re-runs it against every committed spec on every CI run.
 
 ### Oracle behaviour across the difficulty ladder
 
