@@ -29,8 +29,15 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parent
 
+# Training episodes are truncated at this multiple of the certificate length; see
+# WarehouseEnv.episode_limit. Evaluation always uses the full spec step budget.
+TRAIN_HORIZON_FACTOR = 3.0
 
-def build_env(tasks, reward: str, seed: int, max_steps: int | None = None):
+
+def build_env(
+    tasks, reward: str, seed: int, max_steps: int | None = None,
+    horizon_factor: float | None = None,
+):
     from taskforge.envs import WarehouseEnv
 
     return WarehouseEnv(
@@ -39,7 +46,23 @@ def build_env(tasks, reward: str, seed: int, max_steps: int | None = None):
         shaping=(reward == "shaped"),
         seed=seed,
         max_steps=max_steps,
+        horizon_factor=horizon_factor,
     )
+
+
+def build_masked_env(tasks, reward: str, seed: int, max_steps: int | None = None):
+    """Same env, wrapped so MaskablePPO sees the action-validity mask.
+
+    Masking is applied during *training*, not only at inference. Masking at inference
+    only would be a train/test mismatch: the policy would spend its capacity learning to
+    avoid the 20-odd illegal actions available at any moment, then be handed that for
+    free at evaluation time, and the reported invalid-action rate would describe the
+    wrapper rather than the policy.
+    """
+    from sb3_contrib.common.wrappers import ActionMasker
+
+    env = build_env(tasks, reward, seed, max_steps, horizon_factor=TRAIN_HORIZON_FACTOR)
+    return ActionMasker(env, lambda e: e.unwrapped.valid_action_mask())
 
 
 def evaluate_policy(model, tasks, episodes_per_task: int = 1, mask: bool = True) -> dict:
@@ -117,12 +140,12 @@ class CurveCallback:
 
 def train_one(tasks, eval_tasks, reward: str, seed: int, steps: int, eval_every: int) -> dict:
     import torch
-    from stable_baselines3 import PPO
+    from sb3_contrib import MaskablePPO
 
     torch.set_num_threads(2)  # 8 GB M1: more threads is slower, not faster
-    env = build_env(tasks, reward, seed=seed)
+    env = build_masked_env(tasks, reward, seed=seed)
     curve = CurveCallback(eval_tasks, eval_every)
-    model = PPO(
+    model = MaskablePPO(
         "MlpPolicy",
         env,
         seed=seed,
@@ -132,9 +155,9 @@ def train_one(tasks, eval_tasks, reward: str, seed: int, steps: int, eval_every:
         learning_rate=3e-4,
         gamma=0.99,
         gae_lambda=0.95,
-        ent_coef=0.01,
-        n_epochs=6,
-        policy_kwargs={"net_arch": [128, 128]},
+        ent_coef=0.003,
+        n_epochs=10,
+        policy_kwargs={"net_arch": [64, 64]},
         verbose=0,
     )
     t0 = time.time()

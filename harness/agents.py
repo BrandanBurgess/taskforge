@@ -259,13 +259,27 @@ class OracleAgent:
 
 
 class PolicyAgent:
-    """Wraps a trained stable-baselines3 policy. Masks to legal actions at inference so
-    a learned policy is not penalised for the one thing masking exists to prevent."""
+    """Wraps a trained stable-baselines3 policy.
 
-    def __init__(self, model, name: str = "ppo", mask: bool = True):
+    Masking is passed through to the model exactly as it was during training, so what is
+    evaluated is the policy that was actually learned. ``mask=False`` runs the raw
+    policy without masks, which is how the honest invalid-action rate is measured.
+    """
+
+    def __init__(
+        self, model, name: str = "ppo", mask: bool = True, deterministic: bool = False
+    ):
         self.model = model
         self.name = name
         self.mask = mask
+        # Sampled, not argmax, by default. A deterministic argmax policy in a gridworld
+        # with cycles gets absorbed by them: measured here, a policy averaging ~12 return
+        # during (stochastic) training scored -1.24 under argmax because it packed a
+        # partial order and then oscillated N/S until the budget ran out. Evaluating the
+        # policy the way it was trained is both fairer and a better description of what
+        # was learned.
+        self.deterministic = deterministic
+        self.maskable = hasattr(model, "policy") and "Maskable" in type(model).__name__
 
     def reset(self, env: WarehouseEnv) -> None:
         pass
@@ -273,14 +287,18 @@ class PolicyAgent:
     def act(self, env: WarehouseEnv) -> int:
         obs = env._obs()
         if not self.mask:
-            a, _ = self.model.predict(obs, deterministic=True)
+            a, _ = self.model.predict(obs, deterministic=self.deterministic)
             return int(a)
-        dist = self._action_scores(obs)
         legal = env.valid_action_mask()
         if not legal.any():
             return 0
-        dist = np.where(legal, dist, -np.inf)
-        return int(np.argmax(dist))
+        if self.maskable:
+            a, _ = self.model.predict(
+                obs, action_masks=legal, deterministic=self.deterministic
+            )
+            return int(a)
+        scores = np.where(legal, self._action_scores(obs), -np.inf)
+        return int(np.argmax(scores))
 
     def _action_scores(self, obs) -> np.ndarray:
         import torch

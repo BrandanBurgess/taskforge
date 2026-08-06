@@ -1,0 +1,694 @@
+{
+  "config": {
+    "steps": 150000,
+    "seeds": 3,
+    "train_buckets": "1,2,3",
+    "eval_buckets": "1,2,3",
+    "holdout_buckets": "4,5",
+    "n_train_tasks": 34,
+    "n_eval_tasks": 34,
+    "n_holdout_tasks": 26,
+    "device": "cpu",
+    "algo": "PPO",
+    "net_arch": [
+      128,
+      128
+    ]
+  },
+  "runs": [
+    {
+      "reward": "sparse",
+      "seed": 0,
+      "steps": 150000,
+      "seconds": 41.1,
+      "curve": [
+        [
+          15000,
+          0.0
+        ],
+        [
+          30000,
+          0.0
+        ],
+        [
+          45000,
+          0.0
+        ],
+        [
+          60000,
+          0.0
+        ],
+        [
+          75000,
+          0.0
+        ],
+        [
+          90000,
+          0.0
+        ],
+        [
+          105000,
+          0.0
+        ],
+        [
+          120000,
+          0.0
+        ],
+        [
+          135000,
+          0.0
+        ],
+        [
+          150000,
+          0.0
+        ]
+      ],
+      "final": {
+        "episodes": 34,
+        "success_rate": 0.0,
+        "mean_length_ratio": null,
+        "ruin_rate": 0.0,
+        "invalid_action_rate": 0.0,
+        "by_difficulty": {
+          "1": {
+            "n": 11,
+            "success_rate": 0.0,
+            "ruin_rate": 0.0,
+            "mean_length_ratio": null
+          },
+          "2": {
+            "n": 12,
+            "success_rate": 0.0,
+            "ruin_rate": 0.0,
+            "mean_length_ratio": null
+          },
+          "3": {
+            "n": 11,
+            "success_rate": 0.0,
+            "ruin_rate": 0.0,
+            "mean_length_ratio": null
+          }
+        }
+      },
+      "holdout": {
+        "episodes": 26,
+        "success_rate": 0.0,
+        "mean_length_ratio": null,
+        "ruin_rate": 0.0,
+        "invalid_action_rate": 0.3391,
+        "by_difficulty": {
+          "4": {
+            "n": 13,
+            "success_rate": 0.0,
+            "ruin_rate": 0.0,
+            "mean_length_ratio": null
+          },
+          "5": {
+            "n": 13,
+            "success_rate": 0.0,
+            "ruin_rate": 0.0,
+            "mean_length_ratio": null
+          }
+        }
+      }
+    },
+    {
+      "reward": "sparse",
+      "seed": 1,
+      "steps": 150000,
+      "seconds": 41.9,
+      "curve": [
+        [
+          15000,
+          0.0
+        ],
+        [
+          30000,
+          0.0
+        ],
+        [
+          45000,
+          0.0
+        ],
+        [
+          60000,
+          0.0
+        ],
+        [
+          75000,
+          0.0
+        ],
+        [
+          90000,
+          0.0
+        ],
+        [
+          105000,
+          0.0
+        ],
+        [
+          120000,
+          0.0
+        ],
+        [
+          135000,
+          0.0
+        ],
+        [
+          150000,
+          0.0
+        ]
+      ],
+      "final": {
+        "episodes": 34,
+        "success_rate": 0.0,
+        "mean_length_ratio": null,
+        "ruin_rate": 0.0,
+        "invalid_action_rate": 0.0,
+        "by_difficulty": {
+          "1": {
+            "n": 11,
+            "success_rate": 0.0,
+            "ruin_rate": 0.0,
+            "mean_length_ratio": null
+          },
+          "2": {
+            "n": 12,
+            "success_rate": 0.0,
+            "ruin_rate": 0.0,
+            "mean_length_ratio": null
+          },
+          "3": {
+            "n": 11,
+            "success_rate": 0.0,
+            "ruin_rate": 0.0,
+            "mean_length_ratio": null
+          }
+        }
+      },
+      "holdout": {
+        "episodes": 26,
+        "success_rate": 0.0,
+        "mean_length_ratio": null,
+        "ruin_rate": 0.0,
+        "invalid_action_rate": 0.3391,
+        "by_difficulty": {
+          "4": {
+            "n": 13,
+            "success_rate": 0.0,
+            "ruin_rate": 0.0,
+            "mean_length_ratio": null
+          },
+          "5": {
+            "n": 13,
+            "success_rate": 0.0,
+            "ruin_rate": 0.0,
+            "mean_length_ratio": null
+          }
+        }
+      }
+    },
+    {
+      "reward": "sparse",
+      "seed": 2,
+      "steps": 150000,
+      "seconds": 41.2,
+      "curve": [
+        [
+          15000,
+          0.0
+        ],
+        [
+          30000,
+          0.0
+        ],
+        [
+          45000,
+          0.0
+        ],
+        [
+          60000,
+          0.0
+        ],
+        [
+          75000,
+          0.0
+        ],
+        [
+          90000,
+          0.0
+        ],
+        [
+          105000,
+          0.0
+        ],
+        [
+          120000,
+          0.0
+        ],
+        [
+          135000,
+          0.0
+        ],
+        [
+          150000,
+          0.0
+        ]
+      ],
+      "final": {
+        "episodes": 34,
+        "success_rate": 0.0,
+        "mean_length_ratio": null,
+        "ruin_rate": 0.0,
+        "invalid_action_rate": 0.0,
+        "by_difficulty": {
+          "1": {
+            "n": 11,
+            "success_rate": 0.0,
+            "ruin_rate": 0.0,
+            "mean_length_ratio": null
+          },
+          "2": {
+            "n": 12,
+            "success_rate": 0.0,
+            "ruin_rate": 0.0,
+            "mean_length_ratio": null
+          },
+          "3": {
+            "n": 11,
+            "success_rate": 0.0,
+            "ruin_rate": 0.0,
+            "mean_length_ratio": null
+          }
+        }
+      },
+      "holdout": {
+        "episodes": 26,
+        "success_rate": 0.0,
+        "mean_length_ratio": null,
+        "ruin_rate": 0.0,
+        "invalid_action_rate": 0.3391,
+        "by_difficulty": {
+          "4": {
+            "n": 13,
+            "success_rate": 0.0,
+            "ruin_rate": 0.0,
+            "mean_length_ratio": null
+          },
+          "5": {
+            "n": 13,
+            "success_rate": 0.0,
+            "ruin_rate": 0.0,
+            "mean_length_ratio": null
+          }
+        }
+      }
+    },
+    {
+      "reward": "shaped",
+      "seed": 0,
+      "steps": 150000,
+      "seconds": 64.0,
+      "curve": [
+        [
+          15000,
+          0.0
+        ],
+        [
+          30000,
+          0.0
+        ],
+        [
+          45000,
+          0.0
+        ],
+        [
+          60000,
+          0.0
+        ],
+        [
+          75000,
+          0.0
+        ],
+        [
+          90000,
+          0.0
+        ],
+        [
+          105000,
+          0.0
+        ],
+        [
+          120000,
+          0.0
+        ],
+        [
+          135000,
+          0.0
+        ],
+        [
+          150000,
+          0.0
+        ]
+      ],
+      "final": {
+        "episodes": 34,
+        "success_rate": 0.0,
+        "mean_length_ratio": null,
+        "ruin_rate": 0.0,
+        "invalid_action_rate": 0.0,
+        "by_difficulty": {
+          "1": {
+            "n": 11,
+            "success_rate": 0.0,
+            "ruin_rate": 0.0,
+            "mean_length_ratio": null
+          },
+          "2": {
+            "n": 12,
+            "success_rate": 0.0,
+            "ruin_rate": 0.0,
+            "mean_length_ratio": null
+          },
+          "3": {
+            "n": 11,
+            "success_rate": 0.0,
+            "ruin_rate": 0.0,
+            "mean_length_ratio": null
+          }
+        }
+      },
+      "holdout": {
+        "episodes": 26,
+        "success_rate": 0.0,
+        "mean_length_ratio": null,
+        "ruin_rate": 0.0,
+        "invalid_action_rate": 0.3391,
+        "by_difficulty": {
+          "4": {
+            "n": 13,
+            "success_rate": 0.0,
+            "ruin_rate": 0.0,
+            "mean_length_ratio": null
+          },
+          "5": {
+            "n": 13,
+            "success_rate": 0.0,
+            "ruin_rate": 0.0,
+            "mean_length_ratio": null
+          }
+        }
+      }
+    },
+    {
+      "reward": "shaped",
+      "seed": 1,
+      "steps": 150000,
+      "seconds": 64.7,
+      "curve": [
+        [
+          15000,
+          0.0
+        ],
+        [
+          30000,
+          0.0
+        ],
+        [
+          45000,
+          0.0
+        ],
+        [
+          60000,
+          0.0
+        ],
+        [
+          75000,
+          0.0
+        ],
+        [
+          90000,
+          0.0
+        ],
+        [
+          105000,
+          0.0
+        ],
+        [
+          120000,
+          0.0
+        ],
+        [
+          135000,
+          0.0
+        ],
+        [
+          150000,
+          0.0
+        ]
+      ],
+      "final": {
+        "episodes": 34,
+        "success_rate": 0.0,
+        "mean_length_ratio": null,
+        "ruin_rate": 0.0,
+        "invalid_action_rate": 0.0,
+        "by_difficulty": {
+          "1": {
+            "n": 11,
+            "success_rate": 0.0,
+            "ruin_rate": 0.0,
+            "mean_length_ratio": null
+          },
+          "2": {
+            "n": 12,
+            "success_rate": 0.0,
+            "ruin_rate": 0.0,
+            "mean_length_ratio": null
+          },
+          "3": {
+            "n": 11,
+            "success_rate": 0.0,
+            "ruin_rate": 0.0,
+            "mean_length_ratio": null
+          }
+        }
+      },
+      "holdout": {
+        "episodes": 26,
+        "success_rate": 0.0,
+        "mean_length_ratio": null,
+        "ruin_rate": 0.0,
+        "invalid_action_rate": 0.3391,
+        "by_difficulty": {
+          "4": {
+            "n": 13,
+            "success_rate": 0.0,
+            "ruin_rate": 0.0,
+            "mean_length_ratio": null
+          },
+          "5": {
+            "n": 13,
+            "success_rate": 0.0,
+            "ruin_rate": 0.0,
+            "mean_length_ratio": null
+          }
+        }
+      }
+    },
+    {
+      "reward": "shaped",
+      "seed": 2,
+      "steps": 150000,
+      "seconds": 76.0,
+      "curve": [
+        [
+          15000,
+          0.0
+        ],
+        [
+          30000,
+          0.0
+        ],
+        [
+          45000,
+          0.0
+        ],
+        [
+          60000,
+          0.0
+        ],
+        [
+          75000,
+          0.0
+        ],
+        [
+          90000,
+          0.0
+        ],
+        [
+          105000,
+          0.0
+        ],
+        [
+          120000,
+          0.0
+        ],
+        [
+          135000,
+          0.0
+        ],
+        [
+          150000,
+          0.0
+        ]
+      ],
+      "final": {
+        "episodes": 34,
+        "success_rate": 0.0,
+        "mean_length_ratio": null,
+        "ruin_rate": 0.0,
+        "invalid_action_rate": 0.0,
+        "by_difficulty": {
+          "1": {
+            "n": 11,
+            "success_rate": 0.0,
+            "ruin_rate": 0.0,
+            "mean_length_ratio": null
+          },
+          "2": {
+            "n": 12,
+            "success_rate": 0.0,
+            "ruin_rate": 0.0,
+            "mean_length_ratio": null
+          },
+          "3": {
+            "n": 11,
+            "success_rate": 0.0,
+            "ruin_rate": 0.0,
+            "mean_length_ratio": null
+          }
+        }
+      },
+      "holdout": {
+        "episodes": 26,
+        "success_rate": 0.0,
+        "mean_length_ratio": null,
+        "ruin_rate": 0.0,
+        "invalid_action_rate": 0.3391,
+        "by_difficulty": {
+          "4": {
+            "n": 13,
+            "success_rate": 0.0,
+            "ruin_rate": 0.0,
+            "mean_length_ratio": null
+          },
+          "5": {
+            "n": 13,
+            "success_rate": 0.0,
+            "ruin_rate": 0.0,
+            "mean_length_ratio": null
+          }
+        }
+      }
+    }
+  ],
+  "baselines": {
+    "random": {
+      "episodes": 34,
+      "success_rate": 0.0294,
+      "mean_length_ratio": 10.875,
+      "ruin_rate": 0.1176,
+      "invalid_action_rate": 0.0,
+      "by_difficulty": {
+        "1": {
+          "n": 11,
+          "success_rate": 0.0909,
+          "ruin_rate": 0.2727,
+          "mean_length_ratio": 10.875
+        },
+        "2": {
+          "n": 12,
+          "success_rate": 0.0,
+          "ruin_rate": 0.0833,
+          "mean_length_ratio": null
+        },
+        "3": {
+          "n": 11,
+          "success_rate": 0.0,
+          "ruin_rate": 0.0,
+          "mean_length_ratio": null
+        }
+      },
+      "holdout": {
+        "episodes": 26,
+        "success_rate": 0.0,
+        "mean_length_ratio": null,
+        "ruin_rate": 0.1923,
+        "invalid_action_rate": 0.3791,
+        "by_difficulty": {
+          "4": {
+            "n": 13,
+            "success_rate": 0.0,
+            "ruin_rate": 0.1538,
+            "mean_length_ratio": null
+          },
+          "5": {
+            "n": 13,
+            "success_rate": 0.0,
+            "ruin_rate": 0.2308,
+            "mean_length_ratio": null
+          }
+        }
+      }
+    },
+    "greedy": {
+      "episodes": 34,
+      "success_rate": 0.5882,
+      "mean_length_ratio": 1.0802,
+      "ruin_rate": 0.0,
+      "invalid_action_rate": 0.0,
+      "by_difficulty": {
+        "1": {
+          "n": 11,
+          "success_rate": 1.0,
+          "ruin_rate": 0.0,
+          "mean_length_ratio": 1.0797
+        },
+        "2": {
+          "n": 12,
+          "success_rate": 0.5833,
+          "ruin_rate": 0.0,
+          "mean_length_ratio": 1.0816
+        },
+        "3": {
+          "n": 11,
+          "success_rate": 0.1818,
+          "ruin_rate": 0.0,
+          "mean_length_ratio": 1.0776
+        }
+      },
+      "holdout": {
+        "episodes": 26,
+        "success_rate": 0.0,
+        "mean_length_ratio": null,
+        "ruin_rate": 0.0,
+        "invalid_action_rate": 0.0848,
+        "by_difficulty": {
+          "4": {
+            "n": 13,
+            "success_rate": 0.0,
+            "ruin_rate": 0.0,
+            "mean_length_ratio": null
+          },
+          "5": {
+            "n": 13,
+            "success_rate": 0.0,
+            "ruin_rate": 0.0,
+            "mean_length_ratio": null
+          }
+        }
+      }
+    }
+  }
+}

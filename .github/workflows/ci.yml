@@ -1,0 +1,57 @@
+name: ci
+
+# No ANTHROPIC_API_KEY is configured for this workflow, deliberately. A green run is
+# the proof that the offline path is real: generation, verification, rendering, training
+# and evaluation all complete with no API key and no network access to any model.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev,rl]" sb3-contrib
+
+      - name: Lint
+        run: ruff check .
+
+      - name: Confirm no API key is present
+        run: |
+          if [ -n "${ANTHROPIC_API_KEY:-}" ]; then
+            echo "ANTHROPIC_API_KEY is set; this job must prove the offline path" >&2
+            exit 1
+          fi
+          echo "no API key set - offline path only"
+
+      - name: Tests
+        env:
+          SDL_VIDEODRIVER: dummy
+        run: pytest -q
+
+      - name: Committed specs still replay
+        env:
+          SDL_VIDEODRIVER: dummy
+        run: python scripts/check_specs.py
+
+      - name: Demo (smoke)
+        env:
+          SDL_VIDEODRIVER: dummy
+        run: python demo.py --smoke

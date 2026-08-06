@@ -194,7 +194,7 @@ def apply_matplotlib(theme: Theme = LIGHT) -> None:
             "axes.labelcolor": theme.ink_secondary,
             "axes.titlecolor": theme.ink,
             "axes.titlesize": 12,
-            "axes.titleweight": "600",
+            "axes.titleweight": "bold",
             "axes.titlelocation": "left",
             "axes.titlepad": 12,
             "axes.labelsize": 10,

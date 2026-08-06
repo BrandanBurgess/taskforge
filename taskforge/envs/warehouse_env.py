@@ -16,6 +16,19 @@ And the honest corollary, stated here because it is easy to hide: a shaped task 
 Phi is the exact optimal cost-to-go is **easy by construction**. Following the shaping
 gradient *is* the optimal policy. It demonstrates that the plumbing works. It does not
 demonstrate that the task is hard. The sparse variant is the real headline.
+
+**Why the shaping discount defaults to 1.0.** With a shaping discount below 1, a step
+that makes no progress still pays ``F = gamma*Phi(s) - Phi(s) = (1 - gamma) * V(s)``,
+which is strictly positive and *grows with distance from the goal*. Ng et al. guarantee
+the optimal policy is unchanged, and it is -- but a finite-horizon learner does not have
+to find the optimal policy to be happy, and this one did not. Measured here at
+gamma = 0.99: PPO converged to running out the full 120-step budget every episode
+(``ep_len_mean = 120``, ``ep_rew_mean ~ 10``) rather than finishing in 8, because
+loitering in high-V states paid about +0.065/step and reaching the goal ended the
+income. At gamma = 1.0 the shaping telescopes exactly -- +1 per step of real progress, 0
+for standing still -- and the exploit disappears. The policy-invariance argument still
+holds: for an episodic task with an absorbing terminal state and Phi(terminal) = 0, the
+shaping sums to Phi(end) - Phi(start), a constant independent of the route taken.
 """
 
 from __future__ import annotations
@@ -85,9 +98,10 @@ class WarehouseEnv(gym.Env):
         tasks: list[VerifiedTask],
         obs_mode: str = "vector",
         shaping: bool = False,
-        gamma: float = 0.99,
+        gamma: float = 1.0,
         seed: int | None = None,
         max_steps: int | None = None,
+        horizon_factor: float | None = None,
         vstar_budget: int = 150_000,
         goal_reward: float = 10.0,
         step_cost: float = 0.01,
@@ -104,6 +118,7 @@ class WarehouseEnv(gym.Env):
         self.step_cost = step_cost
         self.ruin_penalty = ruin_penalty
         self.max_steps = max_steps
+        self.horizon_factor = horizon_factor
         self._rng = np.random.default_rng(seed)
         self._vstar_budget = vstar_budget
         self._ctg_cache: dict[str, CostToGo] = {}
@@ -159,6 +174,26 @@ class WarehouseEnv(gym.Env):
             return -budget
         return -float(heuristic(self.ctx, state))
 
+    def episode_limit(self) -> int:
+        """Steps allowed before truncation.
+
+        Defaults to the spec's step budget, which is what "solvable" is defined against.
+        For *training* that is wastefully generous -- a task with an 8-step optimum would
+        burn a 120-step episode, so a fixed sample budget buys 15x fewer episodes than it
+        should. ``horizon_factor`` scales the horizon off the certificate length instead,
+        which is another quiet reuse of the oracle's output: it already knows how long
+        this task should take, so it can say how long an attempt is worth running.
+
+        Evaluation always uses the full spec budget, so no agent is judged on a horizon
+        the task was not certified against.
+        """
+        if self.max_steps:
+            return self.max_steps
+        budget = self.task_spec.constraints.step_budget
+        if self.horizon_factor:
+            return min(budget, max(16, int(self.horizon_factor * self.task.certificate.cost)))
+        return budget
+
     def valid_action_mask(self) -> np.ndarray:
         """True where the action is legal in the current state. Exposed for maskable
         policies and used by the scripted and LLM agents to score invalid-action rate."""
@@ -202,7 +237,7 @@ class WarehouseEnv(gym.Env):
 
         goal = is_goal(self.ctx, self.state)
         dead = is_dead(self.ctx, self.state)
-        limit = self.max_steps or self.task_spec.constraints.step_budget
+        limit = self.episode_limit()
 
         reward = -self.step_cost
         if goal:
