@@ -135,9 +135,12 @@ python scripts/build_specs.py --curriculum 10 --wild 0
 python evaluate.py --buckets 1,2,3,4,5 --episodes 3        # results/agent_eval.json
 ```
 
+Evaluated over all five buckets — note this is a *harder* slice than the RL section, which trains and evaluates on buckets 1–2 only:
+
 | agent | pass@1 | steps / oracle-optimal | invalid actions | ended in an unrecoverable state |
 |---|---|---|---|---|
 | oracle (replays its certificate) | 1.000 | 1.00× | 0.0% | 0.0% |
+| PPO + oracle shaping | **0.378** | 1.25× | 26.0% | 17.8% |
 | greedy baseline | 0.333 | 1.08× | 6.1% | **0.0%** |
 | scripted agent *(LLM fallback, no key)* | 0.333 | 1.42× | 11.0% | **38.3%** |
 | random (uniform over **legal** actions) | 0.006 | 11.75× | 20.8% | 15.6% |
@@ -146,9 +149,12 @@ pass@1 by difficulty bucket:
 
 | agent | D1 | D2 | D3 | D4 | D5 |
 |---|---|---|---|---|---|
-| greedy | 1.00 | 0.58 | 0.18 | 0.00 | 0.00 |
+| PPO + shaping | 1.00 | **0.97** | 0.00 | 0.00 | 0.00 |
+| greedy | 1.00 | 0.58 | **0.18** | 0.00 | 0.00 |
 | scripted | 1.00 | 0.67 | 0.09 | 0.00 | 0.00 |
 | random | 0.03 | 0.00 | 0.00 | 0.00 | 0.00 |
+
+The PPO row is the sharpest illustration of the generalization cliff: it is the best agent on D1–D2 (the buckets it trained on, 0.97 on D2 against greedy's 0.58) and the *worst* non-random agent from D3 on, where greedy still scrapes 0.18 and PPO scores zero. Averaged into a single pass@1 those two facts cancel into an unremarkable 0.378, which is why the by-bucket breakdown is the table that matters.
 
 The oracle row is a **sanity check, not a result** — it must be exactly 1.000 at ratio 1.00×, and `evaluate.py` asserts it. If it ever drops, the executor and the certificates have drifted and every other row is suspect.
 
@@ -184,15 +190,15 @@ Nothing about the agent changes across those columns — the *tasks* change. D1 
 
 ### Difficulty calibration
 
-<p align="center"><img src="docs/img/difficulty_calibration.png" alt="Scatter of the oracle-derived difficulty score against pooled agent success rate, with a fitted line, r = -0.71; alongside a bar chart of mean success per difficulty bucket falling monotonically from 0.58 to 0.00." width="100%"></p>
+<p align="center"><img src="docs/img/difficulty_calibration.png" alt="Scatter of the oracle-derived difficulty score against pooled agent success rate, with a fitted line, r = -0.79; alongside a bar chart of mean success per difficulty bucket falling monotonically from 0.71 to 0.00." width="100%"></p>
 
 The label is `plan length × SKU scatter × branching factor`, bucketed into 1–5 on frozen thresholds. Correlated against pooled agent success across 60 tasks:
 
-**r = −0.708** (negative is the expected direction — harder tasks, fewer solves), and mean success falls monotonically across buckets:
+**r = −0.789** across 60 tasks (negative is the expected direction — harder tasks, fewer solves), and mean success falls monotonically across buckets:
 
 | bucket | D1 | D2 | D3 | D4 | D5 |
 |---|---|---|---|---|---|
-| mean agent success | 0.584 | 0.345 | 0.091 | 0.000 | 0.000 |
+| mean agent success | 0.709 | 0.533 | 0.064 | 0.000 | 0.000 |
 
 The label is derived entirely from the oracle's search statistics — no agent was run to produce it — and it still predicts agent success. That is the claim worth making.
 
@@ -207,13 +213,42 @@ python train.py --steps 600000 --seeds 3 --reward both \
 
 <!--RL_TABLE-->
 
+Trained on difficulty buckets 1,2 (23 verified tasks), 3 seeds x 600,000 steps, MaskablePPO on CPU with a [128, 128] MLP.
+
+| agent | success rate (mean ± spread over seeds) | per-seed | steps / oracle-optimal |
+|---|---|---|---|
+| **PPO, sparse reward** *(the honest headline)* | 0.22 ± 0.33 | 0.65 / 0.00 / 0.00 | 1.17× |
+| **PPO + oracle shaping** *(easy by construction)* | 0.96 ± 0.00 | 0.96 / 0.96 / 0.96 | 1.22× |
+| greedy baseline | 0.78 | — | 1.08× |
+| random baseline | 0.04 | — | 10.88× |
+| oracle (certificate replay) | 1.00 | — | 1.00× |
+
+<!--/RL_TABLE-->
+
 **The shaped result is easy by construction and is not the headline.** Φ = −V\* is the exact optimal cost-to-go, so following the shaping gradient *is* the optimal policy. It demonstrates that the oracle → potential → learner plumbing works end to end. It does not demonstrate that the task is hard. The sparse number is the honest measure.
+
+**The interesting number is the spread, not the mean.** Sparse-reward PPO is bimodal across seeds — 0.65, 0.00, 0.00. One seed found the goal and bootstrapped from there; two never found it at all in 600k steps and stayed at zero. Shaped PPO landed on 0.96 in all three. So the honest summary is not "shaping helps by 0.74"; it is that **sparse learning here is a coin flip and shaping makes it reliable**, which is a claim about variance rather than about means.
+
+That spread is also the whole argument for ≥3 seeds. A single-seed write-up of this exact experiment could have honestly reported either 0.65 or 0.00 for the same code, the same tasks and the same step budget. The min–max band on the sparse curve above spans nearly the full y-axis for most of training.
+
+Worth noting for scale: the **greedy baseline scores 0.78 on these buckets and beats sparse PPO comfortably.** A hand-written policy with no learning at all is the thing to beat, and only the shaped agent does.
 
 ### Generalization to unseen difficulty
 
 <p align="center"><img src="docs/img/generalization.png" alt="Success rate for each agent on trained-on difficulty buckets versus held-out harder buckets, showing a large drop for every learned and scripted agent." width="100%"></p>
 
-Train on the easy buckets, evaluate on harder held-out ones. The drop is reported honestly; a failure to generalize is a finding, not an embarrassment.
+Train on difficulty buckets 1–2, evaluate on held-out buckets 3–4. The result is a near-total collapse, and it is the most clearly negative finding in this repo:
+
+| agent | trained-on (D1–2) | held out (D3–4) | drop |
+|---|---|---|---|
+| PPO + oracle shaping | 0.96 | **0.04** | −0.92 |
+| PPO, sparse | 0.22 | 0.01 | −0.21 |
+| greedy baseline | 0.78 | 0.08 | −0.70 |
+| random | 0.04 | 0.00 | −0.04 |
+
+A policy that solves 96% of the tasks it trained on solves 4% of slightly harder ones. Two things are worth separating out. First, this is partly a *difficulty* cliff rather than a pure generalization failure — the hand-written greedy baseline, which does no learning at all and cannot overfit, drops almost as far (0.78 → 0.08). Buckets 3–4 introduce locked zones, keycards, batteries and a second and third order, so a large part of the gap is that the held-out tasks are simply much harder for everything. Second, whatever remains is real overfitting to the training layouts, and 23 training tasks is a very small corpus to expect layout-invariant behaviour from.
+
+The honest reading is that this experiment does not separate "did not generalize" from "the held-out tasks are harder for every method". Separating them needs a held-out set matched for difficulty but differing in layout, which is exactly the kind of controlled slice the MAP-Elites archive is built to produce and which this repo has not yet run.
 
 ### Diversity — MAP-Elites over compounding edits
 
@@ -248,7 +283,7 @@ The argument of this project is that the expensive part of generating a verified
 | reuse | what it is | where it lands |
 |---|---|---|
 | **Reward shaping** | Φ(s) = −V\*(s) from the exact cost-to-go table | learning curves |
-| **Difficulty label** | plan length × SKU scatter × branching, calibrated | r = −0.708 |
+| **Difficulty label** | plan length × SKU scatter × branching, calibrated | r = −0.789 |
 | **Curriculum** | tasks sampled by difficulty bucket; train easy, hold out hard | the generalization result |
 | **Replay witness** | every accepted task ships its certificate plan + GIF | `specs/*.json`, hero GIF, HTML replay |
 | **Ground-truth grader** | every agent scored by the same goal predicate | the eval table |
@@ -323,7 +358,7 @@ Read this section before quoting any number above.
 - **Optimality is cross-checked exhaustively only up to difficulty bucket 3.** Below that, every certificate's length is confirmed against uninformed BFS and against a full backward-Bellman V\* enumeration. Above it the state space is too large to enumerate, so optimality rests on the admissibility argument plus A\* with reopening — sound reasoning, but not an independent check. Solvability itself is still machine-verified at every difficulty, because V3 replays the plan; it is the *minimality* of the plan that is argued rather than exhaustively confirmed at buckets 4–5.
 - **LLM-generator statistics do not exist.** No API key was available. The path is implemented and unit-tested against a mock; it has never been run at scale.
 - **The "LLM agent" row in the eval table is a scripted fallback** (greedy + 12% random actions) and is labelled as such everywhere, including in `results/agent_eval.json` via `used_llm: false`. It exercises the harness offline; it is not a measurement of any language model.
-- **Difficulty calibration pools four agents over 60 tasks.** r = −0.708 is a real correlation on a small, self-generated corpus, not a validated psychometric instrument.
+- **Difficulty calibration pools four non-oracle agents over 60 tasks.** r = −0.789 is a real correlation on a small, self-generated corpus, not a validated psychometric instrument.
 - **Single machine, single hardware profile.** All timings are 8 GB M1, CPU only.
 
 ---

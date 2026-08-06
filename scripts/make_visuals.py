@@ -60,7 +60,9 @@ def main() -> None:
     # -- three-way comparison ---------------------------------------------------------
     tasks = load_specs(ROOT / "specs", buckets=(args.comparison_bucket,))
     if tasks:
-        task = min(tasks, key=lambda t: t.certificate.cost)
+        # The most demanding task in the bucket the policy was actually trained on:
+        # small enough that PPO still performs, large enough to be worth watching.
+        task = max(tasks, key=lambda t: t.certificate.cost)
         model = args.model if Path(args.model).exists() else None
         if model is None:
             print("three_way.gif         (no model checkpoint; oracle + scripted only)")

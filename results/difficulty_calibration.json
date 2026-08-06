@@ -1,19 +1,19 @@
 {
   "n_tasks": 60,
-  "pearson_r": -0.7084,
+  "pearson_r": -0.7894,
   "note": "Correlation between the oracle-derived difficulty score (plan length x SKU scatter x branching) and pooled agent success rate. Negative r is the expected direction: harder tasks, fewer solves.",
   "by_bucket": {
     "1": {
       "n": 11,
-      "mean_success": 0.5844
+      "mean_success": 0.7091
     },
     "2": {
       "n": 12,
-      "mean_success": 0.3452
+      "mean_success": 0.5333
     },
     "3": {
       "n": 11,
-      "mean_success": 0.0909
+      "mean_success": 0.0636
     },
     "4": {
       "n": 13,
@@ -27,75 +27,75 @@
   "points": [
     {
       "score": 11.391,
-      "success": 0.5714
+      "success": 0.7
     },
     {
       "score": 15.565,
-      "success": 0.5714
+      "success": 0.7
     },
     {
       "score": 16.127,
-      "success": 0.5714
+      "success": 0.7
     },
     {
       "score": 14.046,
-      "success": 0.5714
+      "success": 0.7
     },
     {
       "score": 12.708,
-      "success": 0.5714
+      "success": 0.7
     },
     {
       "score": 11.021,
-      "success": 0.7143
+      "success": 0.8
     },
     {
       "score": 14.143,
-      "success": 0.5714
+      "success": 0.7
     },
     {
       "score": 10.759,
-      "success": 0.5714
+      "success": 0.7
     },
     {
       "score": 9.16,
-      "success": 0.5714
+      "success": 0.7
     },
     {
       "score": 18.716,
-      "success": 0.5714
+      "success": 0.7
     },
     {
       "score": 12.214,
-      "success": 0.5714
+      "success": 0.7
     },
     {
       "score": 14.143,
-      "success": 0.5714
+      "success": 0.7
     },
     {
       "score": 35.389,
-      "success": 0.0
+      "success": 0.3
     },
     {
       "score": 31.525,
-      "success": 0.5714
+      "success": 0.7
     },
     {
       "score": 31.35,
-      "success": 0.0
+      "success": 0.3
     },
     {
       "score": 29.14,
-      "success": 0.5714
+      "success": 0.6
     },
     {
       "score": 29.409,
-      "success": 0.5714
+      "success": 0.7
     },
     {
       "score": 25.481,
-      "success": 0.5714
+      "success": 0.7
     },
     {
       "score": 41.284,
@@ -103,23 +103,23 @@
     },
     {
       "score": 36.736,
-      "success": 0.0
+      "success": 0.3
     },
     {
       "score": 29.935,
-      "success": 0.0
+      "success": 0.3
     },
     {
       "score": 34.304,
-      "success": 0.5714
+      "success": 0.7
     },
     {
       "score": 37.29,
-      "success": 0.1429
+      "success": 0.4
     },
     {
       "score": 25.978,
-      "success": 0.5714
+      "success": 0.7
     },
     {
       "score": 68.466,
@@ -163,11 +163,11 @@
     },
     {
       "score": 65.752,
-      "success": 0.4286
+      "success": 0.3
     },
     {
       "score": 64.255,
-      "success": 0.5714
+      "success": 0.4
     },
     {
       "score": 112.948,

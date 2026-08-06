@@ -132,8 +132,33 @@ class WarehouseRenderer:
         self.width = self.cfg.margin * 2 + self.grid_w + (
             self.cfg.panel_w + self.cfg.margin if self.cfg.show_panel else 0
         )
-        self.height = self.cfg.margin * 2 + self.grid_h + self.cfg.header_h
+        # The panel is laid out top-down and can easily be taller than the grid on small
+        # worlds -- a 7x7 task at cell=26 is 182px of grid against a panel that needs
+        # ~380px for its manifest. Sizing the canvas to the grid alone silently clips the
+        # bottom of the panel, which is exactly the part (held items, stock) that makes a
+        # GIF readable.
+        self.panel_h = self._panel_height() if self.cfg.show_panel else 0
+        self.height = (
+            self.cfg.margin * 2 + max(self.grid_h, self.panel_h) + self.cfg.header_h
+        )
         self._static: pygame.Surface | None = None
+
+    def _panel_height(self) -> int:
+        """Conservative estimate of the panel's laid-out height, in the same order the
+        panel draws its blocks."""
+        ctx = self.ctx
+        h = 16 + 13 + 36 + 13 + 24  # step block + action block
+        h += 16  # ORDERS heading
+        for o in range(ctx.n_orders):
+            needs = sum(1 for s in range(ctx.n_skus) if ctx.need_of(o, s) > 0)
+            h += 17 + needs * 15 + 6
+        h += 2 + 15 + 32  # holding
+        if ctx.battery_max >= 0:
+            h += 14 + 20
+        if ctx.zone_ids:
+            h += 14 + len(ctx.zone_ids) * 15 + 6
+        h += 14 + ctx.n_skus * 15  # stock
+        return h + 24
 
     # -- geometry ---------------------------------------------------------------------
     def _origin(self) -> tuple[int, int]:
@@ -392,7 +417,9 @@ class WarehouseRenderer:
         x0 = self.cfg.margin + self.grid_w + self.cfg.margin
         y = self.cfg.margin + self.cfg.header_h
         w = self.cfg.panel_w
-        _round_rect(surf, (x0, y, w, self.grid_h), t.plane, t.grid, radius=10)
+        _round_rect(
+            surf, (x0, y, w, max(self.grid_h, self.panel_h)), t.plane, t.grid, radius=10
+        )
         px = x0 + 18
         yy = y + 16
 

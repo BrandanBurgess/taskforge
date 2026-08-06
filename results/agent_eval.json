@@ -3552,6 +3552,1507 @@
         }
       ]
     },
+    "ppo": {
+      "agent": "ppo",
+      "overall": {
+        "n": 180,
+        "pass_at_1": 0.3778,
+        "mean_length_ratio": 1.253,
+        "median_length_ratio": 1.177,
+        "irreversible_rate": 0.1778,
+        "invalid_action_rate": 0.2599,
+        "mean_steps": 128.9
+      },
+      "by_difficulty": {
+        "1": {
+          "n": 33,
+          "pass_at_1": 1.0,
+          "mean_length_ratio": 1.379,
+          "median_length_ratio": 1.222,
+          "irreversible_rate": 0.0,
+          "invalid_action_rate": 0.0,
+          "mean_steps": 12.1
+        },
+        "2": {
+          "n": 36,
+          "pass_at_1": 0.9722,
+          "mean_length_ratio": 1.134,
+          "median_length_ratio": 1.125,
+          "irreversible_rate": 0.0278,
+          "invalid_action_rate": 0.0,
+          "mean_steps": 20.8
+        },
+        "3": {
+          "n": 33,
+          "pass_at_1": 0.0,
+          "mean_length_ratio": null,
+          "median_length_ratio": null,
+          "irreversible_rate": 0.303,
+          "invalid_action_rate": 0.0,
+          "mean_steps": 148.2
+        },
+        "4": {
+          "n": 39,
+          "pass_at_1": 0.0,
+          "mean_length_ratio": null,
+          "median_length_ratio": null,
+          "irreversible_rate": 0.2308,
+          "invalid_action_rate": 0.6738,
+          "mean_steps": 205.8
+        },
+        "5": {
+          "n": 39,
+          "pass_at_1": 0.0,
+          "mean_length_ratio": null,
+          "median_length_ratio": null,
+          "irreversible_rate": 0.3077,
+          "invalid_action_rate": 0.0682,
+          "mean_steps": 234.5
+        }
+      },
+      "_raw": [
+        {
+          "task_id": "wh-d1-s00000",
+          "difficulty": 1,
+          "optimal": 8,
+          "steps": 8,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d1-s00000",
+          "difficulty": 1,
+          "optimal": 8,
+          "steps": 12,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d1-s00000",
+          "difficulty": 1,
+          "optimal": 8,
+          "steps": 12,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d1-s00001",
+          "difficulty": 1,
+          "optimal": 10,
+          "steps": 12,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d1-s00001",
+          "difficulty": 1,
+          "optimal": 10,
+          "steps": 12,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d1-s00001",
+          "difficulty": 1,
+          "optimal": 10,
+          "steps": 12,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d1-s00002",
+          "difficulty": 1,
+          "optimal": 11,
+          "steps": 11,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d1-s00002",
+          "difficulty": 1,
+          "optimal": 11,
+          "steps": 11,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d1-s00002",
+          "difficulty": 1,
+          "optimal": 11,
+          "steps": 11,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d1-s00003",
+          "difficulty": 1,
+          "optimal": 9,
+          "steps": 11,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d1-s00003",
+          "difficulty": 1,
+          "optimal": 9,
+          "steps": 13,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d1-s00003",
+          "difficulty": 1,
+          "optimal": 9,
+          "steps": 11,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d1-s00004",
+          "difficulty": 1,
+          "optimal": 9,
+          "steps": 11,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d1-s00004",
+          "difficulty": 1,
+          "optimal": 9,
+          "steps": 9,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d1-s00004",
+          "difficulty": 1,
+          "optimal": 9,
+          "steps": 9,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d1-s00005",
+          "difficulty": 1,
+          "optimal": 8,
+          "steps": 10,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d1-s00005",
+          "difficulty": 1,
+          "optimal": 8,
+          "steps": 12,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d1-s00005",
+          "difficulty": 1,
+          "optimal": 8,
+          "steps": 10,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d1-s00006",
+          "difficulty": 1,
+          "optimal": 11,
+          "steps": 15,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d1-s00006",
+          "difficulty": 1,
+          "optimal": 11,
+          "steps": 15,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d1-s00006",
+          "difficulty": 1,
+          "optimal": 11,
+          "steps": 15,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d1-s00007",
+          "difficulty": 1,
+          "optimal": 8,
+          "steps": 8,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d1-s00007",
+          "difficulty": 1,
+          "optimal": 8,
+          "steps": 8,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d1-s00007",
+          "difficulty": 1,
+          "optimal": 8,
+          "steps": 11,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d1-s00008",
+          "difficulty": 1,
+          "optimal": 7,
+          "steps": 7,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d1-s00008",
+          "difficulty": 1,
+          "optimal": 7,
+          "steps": 45,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d1-s00008",
+          "difficulty": 1,
+          "optimal": 7,
+          "steps": 11,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d1-s00009",
+          "difficulty": 2,
+          "optimal": 13,
+          "steps": 13,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d1-s00009",
+          "difficulty": 2,
+          "optimal": 13,
+          "steps": 15,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d1-s00009",
+          "difficulty": 2,
+          "optimal": 13,
+          "steps": 13,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d1-s00010",
+          "difficulty": 1,
+          "optimal": 9,
+          "steps": 9,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d1-s00010",
+          "difficulty": 1,
+          "optimal": 9,
+          "steps": 9,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d1-s00010",
+          "difficulty": 1,
+          "optimal": 9,
+          "steps": 9,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d1-s00011",
+          "difficulty": 1,
+          "optimal": 9,
+          "steps": 13,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d1-s00011",
+          "difficulty": 1,
+          "optimal": 9,
+          "steps": 13,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d1-s00011",
+          "difficulty": 1,
+          "optimal": 9,
+          "steps": 13,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d2-s00000",
+          "difficulty": 2,
+          "optimal": 19,
+          "steps": 19,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d2-s00000",
+          "difficulty": 2,
+          "optimal": 19,
+          "steps": 19,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d2-s00000",
+          "difficulty": 2,
+          "optimal": 19,
+          "steps": 19,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d2-s00001",
+          "difficulty": 2,
+          "optimal": 17,
+          "steps": 17,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d2-s00001",
+          "difficulty": 2,
+          "optimal": 17,
+          "steps": 17,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d2-s00001",
+          "difficulty": 2,
+          "optimal": 17,
+          "steps": 17,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d2-s00002",
+          "difficulty": 2,
+          "optimal": 19,
+          "steps": 27,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d2-s00002",
+          "difficulty": 2,
+          "optimal": 19,
+          "steps": 23,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d2-s00002",
+          "difficulty": 2,
+          "optimal": 19,
+          "steps": 27,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d2-s00003",
+          "difficulty": 2,
+          "optimal": 16,
+          "steps": 22,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d2-s00003",
+          "difficulty": 2,
+          "optimal": 16,
+          "steps": 39,
+          "solved": false,
+          "ruined": true
+        },
+        {
+          "task_id": "wh-d2-s00003",
+          "difficulty": 2,
+          "optimal": 16,
+          "steps": 18,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d2-s00004",
+          "difficulty": 2,
+          "optimal": 17,
+          "steps": 17,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d2-s00004",
+          "difficulty": 2,
+          "optimal": 17,
+          "steps": 17,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d2-s00004",
+          "difficulty": 2,
+          "optimal": 17,
+          "steps": 17,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d2-s00005",
+          "difficulty": 2,
+          "optimal": 16,
+          "steps": 18,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d2-s00005",
+          "difficulty": 2,
+          "optimal": 16,
+          "steps": 18,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d2-s00005",
+          "difficulty": 2,
+          "optimal": 16,
+          "steps": 18,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d2-s00006",
+          "difficulty": 3,
+          "optimal": 23,
+          "steps": 160,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d2-s00006",
+          "difficulty": 3,
+          "optimal": 23,
+          "steps": 160,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d2-s00006",
+          "difficulty": 3,
+          "optimal": 23,
+          "steps": 160,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d2-s00007",
+          "difficulty": 2,
+          "optimal": 20,
+          "steps": 24,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d2-s00007",
+          "difficulty": 2,
+          "optimal": 20,
+          "steps": 24,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d2-s00007",
+          "difficulty": 2,
+          "optimal": 20,
+          "steps": 24,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d2-s00008",
+          "difficulty": 2,
+          "optimal": 18,
+          "steps": 20,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d2-s00008",
+          "difficulty": 2,
+          "optimal": 18,
+          "steps": 20,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d2-s00008",
+          "difficulty": 2,
+          "optimal": 18,
+          "steps": 20,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d2-s00009",
+          "difficulty": 2,
+          "optimal": 20,
+          "steps": 24,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d2-s00009",
+          "difficulty": 2,
+          "optimal": 20,
+          "steps": 24,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d2-s00009",
+          "difficulty": 2,
+          "optimal": 20,
+          "steps": 24,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d2-s00010",
+          "difficulty": 2,
+          "optimal": 22,
+          "steps": 30,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d2-s00010",
+          "difficulty": 2,
+          "optimal": 22,
+          "steps": 30,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d2-s00010",
+          "difficulty": 2,
+          "optimal": 22,
+          "steps": 30,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d2-s00011",
+          "difficulty": 2,
+          "optimal": 15,
+          "steps": 15,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d2-s00011",
+          "difficulty": 2,
+          "optimal": 15,
+          "steps": 15,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d2-s00011",
+          "difficulty": 2,
+          "optimal": 15,
+          "steps": 15,
+          "solved": true,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d3-s00000",
+          "difficulty": 3,
+          "optimal": 40,
+          "steps": 200,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d3-s00000",
+          "difficulty": 3,
+          "optimal": 40,
+          "steps": 200,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d3-s00000",
+          "difficulty": 3,
+          "optimal": 40,
+          "steps": 200,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d3-s00001",
+          "difficulty": 3,
+          "optimal": 38,
+          "steps": 200,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d3-s00001",
+          "difficulty": 3,
+          "optimal": 38,
+          "steps": 200,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d3-s00001",
+          "difficulty": 3,
+          "optimal": 38,
+          "steps": 200,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d3-s00002",
+          "difficulty": 3,
+          "optimal": 38,
+          "steps": 35,
+          "solved": false,
+          "ruined": true
+        },
+        {
+          "task_id": "wh-d3-s00002",
+          "difficulty": 3,
+          "optimal": 38,
+          "steps": 31,
+          "solved": false,
+          "ruined": true
+        },
+        {
+          "task_id": "wh-d3-s00002",
+          "difficulty": 3,
+          "optimal": 38,
+          "steps": 123,
+          "solved": false,
+          "ruined": true
+        },
+        {
+          "task_id": "wh-d3-s00003",
+          "difficulty": 3,
+          "optimal": 45,
+          "steps": 200,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d3-s00003",
+          "difficulty": 3,
+          "optimal": 45,
+          "steps": 200,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d3-s00003",
+          "difficulty": 3,
+          "optimal": 45,
+          "steps": 200,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d3-s00004",
+          "difficulty": 3,
+          "optimal": 34,
+          "steps": 200,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d3-s00004",
+          "difficulty": 3,
+          "optimal": 34,
+          "steps": 200,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d3-s00004",
+          "difficulty": 3,
+          "optimal": 34,
+          "steps": 200,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d3-s00005",
+          "difficulty": 3,
+          "optimal": 38,
+          "steps": 200,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d3-s00005",
+          "difficulty": 3,
+          "optimal": 38,
+          "steps": 200,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d3-s00005",
+          "difficulty": 3,
+          "optimal": 38,
+          "steps": 81,
+          "solved": false,
+          "ruined": true
+        },
+        {
+          "task_id": "wh-d3-s00006",
+          "difficulty": 3,
+          "optimal": 33,
+          "steps": 23,
+          "solved": false,
+          "ruined": true
+        },
+        {
+          "task_id": "wh-d3-s00006",
+          "difficulty": 3,
+          "optimal": 33,
+          "steps": 23,
+          "solved": false,
+          "ruined": true
+        },
+        {
+          "task_id": "wh-d3-s00006",
+          "difficulty": 3,
+          "optimal": 33,
+          "steps": 23,
+          "solved": false,
+          "ruined": true
+        },
+        {
+          "task_id": "wh-d3-s00007",
+          "difficulty": 3,
+          "optimal": 40,
+          "steps": 200,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d3-s00007",
+          "difficulty": 3,
+          "optimal": 40,
+          "steps": 200,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d3-s00007",
+          "difficulty": 3,
+          "optimal": 40,
+          "steps": 200,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d3-s00008",
+          "difficulty": 4,
+          "optimal": 44,
+          "steps": 200,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d3-s00008",
+          "difficulty": 4,
+          "optimal": 44,
+          "steps": 200,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d3-s00008",
+          "difficulty": 4,
+          "optimal": 44,
+          "steps": 200,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d3-s00009",
+          "difficulty": 4,
+          "optimal": 54,
+          "steps": 149,
+          "solved": false,
+          "ruined": true
+        },
+        {
+          "task_id": "wh-d3-s00009",
+          "difficulty": 4,
+          "optimal": 54,
+          "steps": 71,
+          "solved": false,
+          "ruined": true
+        },
+        {
+          "task_id": "wh-d3-s00009",
+          "difficulty": 4,
+          "optimal": 54,
+          "steps": 200,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d3-s00010",
+          "difficulty": 3,
+          "optimal": 40,
+          "steps": 200,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d3-s00010",
+          "difficulty": 3,
+          "optimal": 40,
+          "steps": 200,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d3-s00010",
+          "difficulty": 3,
+          "optimal": 40,
+          "steps": 200,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d3-s00011",
+          "difficulty": 3,
+          "optimal": 38,
+          "steps": 24,
+          "solved": false,
+          "ruined": true
+        },
+        {
+          "task_id": "wh-d3-s00011",
+          "difficulty": 3,
+          "optimal": 38,
+          "steps": 24,
+          "solved": false,
+          "ruined": true
+        },
+        {
+          "task_id": "wh-d3-s00011",
+          "difficulty": 3,
+          "optimal": 38,
+          "steps": 24,
+          "solved": false,
+          "ruined": true
+        },
+        {
+          "task_id": "wh-d4-s00000",
+          "difficulty": 4,
+          "optimal": 61,
+          "steps": 51,
+          "solved": false,
+          "ruined": true
+        },
+        {
+          "task_id": "wh-d4-s00000",
+          "difficulty": 4,
+          "optimal": 61,
+          "steps": 260,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d4-s00000",
+          "difficulty": 4,
+          "optimal": 61,
+          "steps": 260,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d4-s00001",
+          "difficulty": 4,
+          "optimal": 67,
+          "steps": 260,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d4-s00001",
+          "difficulty": 4,
+          "optimal": 67,
+          "steps": 260,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d4-s00001",
+          "difficulty": 4,
+          "optimal": 67,
+          "steps": 260,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d4-s00002",
+          "difficulty": 4,
+          "optimal": 50,
+          "steps": 260,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d4-s00002",
+          "difficulty": 4,
+          "optimal": 50,
+          "steps": 26,
+          "solved": false,
+          "ruined": true
+        },
+        {
+          "task_id": "wh-d4-s00002",
+          "difficulty": 4,
+          "optimal": 50,
+          "steps": 42,
+          "solved": false,
+          "ruined": true
+        },
+        {
+          "task_id": "wh-d4-s00003",
+          "difficulty": 4,
+          "optimal": 57,
+          "steps": 31,
+          "solved": false,
+          "ruined": true
+        },
+        {
+          "task_id": "wh-d4-s00003",
+          "difficulty": 4,
+          "optimal": 57,
+          "steps": 31,
+          "solved": false,
+          "ruined": true
+        },
+        {
+          "task_id": "wh-d4-s00003",
+          "difficulty": 4,
+          "optimal": 57,
+          "steps": 260,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d4-s00004",
+          "difficulty": 5,
+          "optimal": 69,
+          "steps": 260,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d4-s00004",
+          "difficulty": 5,
+          "optimal": 69,
+          "steps": 260,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d4-s00004",
+          "difficulty": 5,
+          "optimal": 69,
+          "steps": 260,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d4-s00005",
+          "difficulty": 4,
+          "optimal": 48,
+          "steps": 25,
+          "solved": false,
+          "ruined": true
+        },
+        {
+          "task_id": "wh-d4-s00005",
+          "difficulty": 4,
+          "optimal": 48,
+          "steps": 260,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d4-s00005",
+          "difficulty": 4,
+          "optimal": 48,
+          "steps": 260,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d4-s00006",
+          "difficulty": 4,
+          "optimal": 65,
+          "steps": 260,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d4-s00006",
+          "difficulty": 4,
+          "optimal": 65,
+          "steps": 260,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d4-s00006",
+          "difficulty": 4,
+          "optimal": 65,
+          "steps": 260,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d4-s00007",
+          "difficulty": 4,
+          "optimal": 67,
+          "steps": 40,
+          "solved": false,
+          "ruined": true
+        },
+        {
+          "task_id": "wh-d4-s00007",
+          "difficulty": 4,
+          "optimal": 67,
+          "steps": 260,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d4-s00007",
+          "difficulty": 4,
+          "optimal": 67,
+          "steps": 260,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d4-s00008",
+          "difficulty": 4,
+          "optimal": 63,
+          "steps": 260,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d4-s00008",
+          "difficulty": 4,
+          "optimal": 63,
+          "steps": 260,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d4-s00008",
+          "difficulty": 4,
+          "optimal": 63,
+          "steps": 260,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d4-s00009",
+          "difficulty": 4,
+          "optimal": 59,
+          "steps": 260,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d4-s00009",
+          "difficulty": 4,
+          "optimal": 59,
+          "steps": 260,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d4-s00009",
+          "difficulty": 4,
+          "optimal": 59,
+          "steps": 260,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d4-s00010",
+          "difficulty": 4,
+          "optimal": 67,
+          "steps": 260,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d4-s00010",
+          "difficulty": 4,
+          "optimal": 67,
+          "steps": 260,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d4-s00010",
+          "difficulty": 4,
+          "optimal": 67,
+          "steps": 260,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d4-s00011",
+          "difficulty": 4,
+          "optimal": 62,
+          "steps": 260,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d4-s00011",
+          "difficulty": 4,
+          "optimal": 62,
+          "steps": 260,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d4-s00011",
+          "difficulty": 4,
+          "optimal": 62,
+          "steps": 260,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d5-s00000",
+          "difficulty": 5,
+          "optimal": 92,
+          "steps": 147,
+          "solved": false,
+          "ruined": true
+        },
+        {
+          "task_id": "wh-d5-s00000",
+          "difficulty": 5,
+          "optimal": 92,
+          "steps": 320,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d5-s00000",
+          "difficulty": 5,
+          "optimal": 92,
+          "steps": 320,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d5-s00001",
+          "difficulty": 5,
+          "optimal": 102,
+          "steps": 320,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d5-s00001",
+          "difficulty": 5,
+          "optimal": 102,
+          "steps": 320,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d5-s00001",
+          "difficulty": 5,
+          "optimal": 102,
+          "steps": 320,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d5-s00002",
+          "difficulty": 5,
+          "optimal": 102,
+          "steps": 320,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d5-s00002",
+          "difficulty": 5,
+          "optimal": 102,
+          "steps": 320,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d5-s00002",
+          "difficulty": 5,
+          "optimal": 102,
+          "steps": 320,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d5-s00003",
+          "difficulty": 5,
+          "optimal": 93,
+          "steps": 320,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d5-s00003",
+          "difficulty": 5,
+          "optimal": 93,
+          "steps": 320,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d5-s00003",
+          "difficulty": 5,
+          "optimal": 93,
+          "steps": 320,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d5-s00004",
+          "difficulty": 5,
+          "optimal": 83,
+          "steps": 320,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d5-s00004",
+          "difficulty": 5,
+          "optimal": 83,
+          "steps": 320,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d5-s00004",
+          "difficulty": 5,
+          "optimal": 83,
+          "steps": 320,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d5-s00005",
+          "difficulty": 5,
+          "optimal": 103,
+          "steps": 320,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d5-s00005",
+          "difficulty": 5,
+          "optimal": 103,
+          "steps": 320,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d5-s00005",
+          "difficulty": 5,
+          "optimal": 103,
+          "steps": 320,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d5-s00006",
+          "difficulty": 5,
+          "optimal": 90,
+          "steps": 40,
+          "solved": false,
+          "ruined": true
+        },
+        {
+          "task_id": "wh-d5-s00006",
+          "difficulty": 5,
+          "optimal": 90,
+          "steps": 38,
+          "solved": false,
+          "ruined": true
+        },
+        {
+          "task_id": "wh-d5-s00006",
+          "difficulty": 5,
+          "optimal": 90,
+          "steps": 36,
+          "solved": false,
+          "ruined": true
+        },
+        {
+          "task_id": "wh-d5-s00007",
+          "difficulty": 5,
+          "optimal": 88,
+          "steps": 320,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d5-s00007",
+          "difficulty": 5,
+          "optimal": 88,
+          "steps": 320,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d5-s00007",
+          "difficulty": 5,
+          "optimal": 88,
+          "steps": 320,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d5-s00008",
+          "difficulty": 5,
+          "optimal": 98,
+          "steps": 320,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d5-s00008",
+          "difficulty": 5,
+          "optimal": 98,
+          "steps": 320,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d5-s00008",
+          "difficulty": 5,
+          "optimal": 98,
+          "steps": 320,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d5-s00009",
+          "difficulty": 5,
+          "optimal": 87,
+          "steps": 37,
+          "solved": false,
+          "ruined": true
+        },
+        {
+          "task_id": "wh-d5-s00009",
+          "difficulty": 5,
+          "optimal": 87,
+          "steps": 35,
+          "solved": false,
+          "ruined": true
+        },
+        {
+          "task_id": "wh-d5-s00009",
+          "difficulty": 5,
+          "optimal": 87,
+          "steps": 35,
+          "solved": false,
+          "ruined": true
+        },
+        {
+          "task_id": "wh-d5-s00010",
+          "difficulty": 5,
+          "optimal": 86,
+          "steps": 87,
+          "solved": false,
+          "ruined": true
+        },
+        {
+          "task_id": "wh-d5-s00010",
+          "difficulty": 5,
+          "optimal": 86,
+          "steps": 320,
+          "solved": false,
+          "ruined": false
+        },
+        {
+          "task_id": "wh-d5-s00010",
+          "difficulty": 5,
+          "optimal": 86,
+          "steps": 81,
+          "solved": false,
+          "ruined": true
+        },
+        {
+          "task_id": "wh-d5-s00011",
+          "difficulty": 5,
+          "optimal": 74,
+          "steps": 68,
+          "solved": false,
+          "ruined": true
+        },
+        {
+          "task_id": "wh-d5-s00011",
+          "difficulty": 5,
+          "optimal": 74,
+          "steps": 44,
+          "solved": false,
+          "ruined": true
+        },
+        {
+          "task_id": "wh-d5-s00011",
+          "difficulty": 5,
+          "optimal": 74,
+          "steps": 36,
+          "solved": false,
+          "ruined": true
+        }
+      ]
+    },
     "llm": {
       "agent": "scripted (LLM fallback, no API key)",
       "overall": {

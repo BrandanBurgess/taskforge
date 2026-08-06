@@ -507,7 +507,18 @@ def generalization(training: dict, theme: Theme = LIGHT) -> Path:
             )
 
     x = np.arange(2)
-    for key, lab, seen, held in entries:
+    # Held-out values cluster near zero and their labels collide; nudge each one to keep
+    # a minimum vertical separation instead of stacking four numbers on one pixel row.
+    order = sorted(range(len(entries)), key=lambda i: float(np.mean(entries[i][3])))
+    label_y: dict[int, float] = {}
+    prev = -1e9
+    for i in order:
+        v = float(np.mean(entries[i][3]))
+        v = max(v, prev + 0.055)
+        label_y[i] = v
+        prev = v
+
+    for idx, (key, lab, seen, held) in enumerate(entries):
         col = agent_color(key, theme)
         m = [float(np.mean(seen)), float(np.mean(held))]
         ax.plot(x, m, color=col, marker="o", markersize=7, markeredgecolor=theme.surface,
@@ -518,8 +529,8 @@ def generalization(training: dict, theme: Theme = LIGHT) -> Path:
                 color=col, alpha=0.14, linewidth=0, zorder=2,
             )
         ax.annotate(
-            f"{m[1]:.2f}", (1, m[1]), textcoords="offset points", xytext=(9, 0),
-            fontsize=9, color=theme.ink_secondary, va="center",
+            f"{m[1]:.2f}", (1, label_y[idx]), textcoords="offset points", xytext=(9, 0),
+            fontsize=9, color=col, va="center", fontweight="bold",
         )
     tb = training["config"]["train_buckets"]
     hb = training["config"]["holdout_buckets"]
