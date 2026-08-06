@@ -263,7 +263,10 @@ class WarehouseEnv(gym.Env):
             "solved": is_goal(self.ctx, self.state),
             "ruined": is_dead(self.ctx, self.state),
             "invalid_action": invalid,
-            "action_mask": self.valid_action_mask(),
+            # NOTE: the action mask is deliberately NOT included here. Building it costs
+            # 25 executor calls, and putting it in `info` paid that on every single step
+            # whether or not anything read it. Consumers that need it call
+            # `env.valid_action_mask()`, which is what the ActionMasker wrapper does.
         }
 
     # -- observations ----------------------------------------------------------------
