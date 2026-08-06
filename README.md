@@ -120,7 +120,7 @@ python scripts/build_specs.py --curriculum 10 --wild 0
 | 4 | 13×11 | 2 | + zone, battery | 10/10 | 48–69 | 20,984 |
 | 5 | 13×11 | 3 | + 2 zones | 10/10 | 83–103 | 47,713 |
 
-50/50 accepted in 12.3 s total.
+50/50 accepted in 7.9 s total (measured on the M1 with the training run competing for CPU).
 
 ### Agent evaluation, graded by the oracle
 
@@ -283,6 +283,7 @@ Read this section before quoting any number above.
 - **The shaped-reward result is easy by construction.** Φ is the exact optimal cost-to-go, so the shaping gradient *is* the optimal policy. It proves the plumbing, not the difficulty. The sparse number is the real one.
 - **The state space is symbolic and small.** Grids are ≤ 16×16, ≤ 6 SKUs, ≤ 3 orders. This is a planning domain, not a robotics simulator, and none of it says anything about continuous control.
 - **"Solvable" is bounded by the oracle's budget.** 200,000 expanded nodes and the spec's step budget. `budget_exhausted` means *we don't know*, and we reject on it.
+- **Optimality is cross-checked exhaustively only up to difficulty bucket 3.** Below that, every certificate's length is confirmed against uninformed BFS and against a full backward-Bellman V\* enumeration. Above it the state space is too large to enumerate, so optimality rests on the admissibility argument plus A\* with reopening — sound reasoning, but not an independent check. Solvability itself is still machine-verified at every difficulty, because V3 replays the plan; it is the *minimality* of the plan that is argued rather than exhaustively confirmed at buckets 4–5.
 - **LLM-generator statistics do not exist.** No API key was available. The path is implemented and unit-tested against a mock; it has never been run at scale.
 - **The "LLM agent" row in the eval table is a scripted fallback** (greedy + 12% random actions) and is labelled as such everywhere, including in `results/agent_eval.json` via `used_llm: false`. It exercises the harness offline; it is not a measurement of any language model.
 - **Difficulty calibration pools four agents over 60 tasks.** r = −0.708 is a real correlation on a small, self-generated corpus, not a validated psychometric instrument.
