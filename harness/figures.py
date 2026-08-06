@@ -233,8 +233,10 @@ def difficulty_calibration(calib: dict, theme: Theme = LIGHT) -> Path:
     )
     if len(xs) > 2 and xs.std() > 0:
         k, b = np.polyfit(xs, ys, 1)
-        gx = np.linspace(xs.min(), xs.max(), 50)
-        ax.plot(gx, k * gx + b, color=theme.ink, linewidth=1.4, alpha=0.65, zorder=4)
+        gx = np.linspace(xs.min(), xs.max(), 200)
+        gy = k * gx + b
+        keep = (gy >= 0) & (gy <= 1)  # don't draw the fit outside the plotted range
+        ax.plot(gx[keep], gy[keep], color=theme.ink, linewidth=1.4, alpha=0.65, zorder=4)
     ax.set_xlabel("oracle difficulty score  (plan length x SKU scatter x branching)")
     ax.set_ylabel("pooled agent success rate")
     ax.set_ylim(-0.05, 1.05)
@@ -253,15 +255,18 @@ def difficulty_calibration(calib: dict, theme: Theme = LIGHT) -> Path:
         range(len(buckets)), vals, width=0.62,
         color=[theme.ramp[i] for i in idxs], zorder=3,
     )
-    ax2.set_xticks(range(len(buckets)), [f"D{b}" for b in buckets])
+    # Sample size goes in the tick label, not inside the bar: at D4/D5 the bars are zero
+    # height and an in-bar "n=" collides with the value label.
+    ax2.set_xticks(
+        range(len(buckets)), [f"D{b}\nn={n}" for b, n in zip(buckets, ns, strict=True)]
+    )
     ax2.set_ylim(0, 1.05)
     ax2.set_ylabel("mean success rate")
     ax2.set_title("by difficulty bucket", color=theme.ink)
-    for i, (v, n) in enumerate(zip(vals, ns, strict=True)):
+    for i, v in enumerate(vals):
         ax2.text(
             i, v + 0.03, f"{v:.2f}", ha="center", fontsize=9, color=theme.ink_secondary
         )
-        ax2.text(i, 0.02, f"n={n}", ha="center", fontsize=8, color=theme.ink_muted)
     return _save(fig, "difficulty_calibration", theme)
 
 

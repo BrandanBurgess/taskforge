@@ -43,7 +43,7 @@ def fmt_plan(spec, plan, per_line: int = 6) -> str:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--smoke", action="store_true", help="fast path for CI")
-    ap.add_argument("--steps", type=int, default=60_000, help="PPO steps for the demo run")
+    ap.add_argument("--steps", type=int, default=250_000, help="PPO steps for the demo run")
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--skip-train", action="store_true")
     args = ap.parse_args()
@@ -126,6 +126,8 @@ def main() -> None:
     model = None
     if not args.skip_train:
         rule("5. Short PPO run (CPU)")
+        # 250k is where the scaling curve first clears the greedy baseline; below
+        # ~150k the demo would truthfully report 0.00 and look broken.
         steps = 8_000 if smoke else args.steps
         import torch
         from sb3_contrib import MaskablePPO
