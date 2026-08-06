@@ -33,7 +33,7 @@ python demo.py
 
 **No API key is needed.** Not for the demo, not for any headline number in this README, not for CI. Everything runs offline from the procedural generator plus 60 committed pre-verified specs. The LLM paths (task generation and the LLM agent) are optional enhancements that degrade cleanly when `ANTHROPIC_API_KEY` is absent.
 
-`demo.py` takes ~2 minutes on an M1: generate → verify through V1/V2/V3 → print the certificate plan → render the hero GIF and cost-to-go field → short PPO run → evaluate every agent → write figures → summary table.
+`demo.py` takes ~90 seconds on an M1 (19 s with `--smoke`): generate → verify through V1/V2/V3 → print the certificate plan → render the hero GIF and cost-to-go field → short PPO run → evaluate every agent → write figures → summary table.
 
 There is also an [interactive HTML replay viewer](docs/replay.html) (self-contained, no CDN) — open it from disk and scrub through a certified plan step by step.
 
