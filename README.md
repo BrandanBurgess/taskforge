@@ -222,6 +222,15 @@ python harness/mutate.py --iterations 500        # results/map_elites.json
 
 The most interesting row is the per-operator survival rate: **`add_conveyor` survives only 55%**, by far the lowest, because a one-way conveyor is the single easiest way to make a warehouse unsolvable. `drop_unit`, `shift_start` and `tighten_budget` survive 100%. That ranking is a free by-product of re-verifying every mutant, and it is the kind of thing you cannot know without an oracle.
 
+The deepest surviving elite is a difficulty-5 task with an 87-step certificate, thirteen edits removed from its seed:
+
+```
+shift_start → add_conveyor → shift_start → add_unit → tighten_capacity → add_unit
+  → add_order → add_unit → move_sku → … (13 edits)
+```
+
+Every intermediate step in that chain was re-verified. The task at the end is not "probably still solvable" — it ships with its own optimal plan.
+
 ---
 
 ## Oracle reuse — the intellectual core
