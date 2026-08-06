@@ -150,6 +150,16 @@ The oracle row is a **sanity check, not a result** — it must be exactly 1.000 
 
 The random baseline samples uniformly from *legal* actions, not from all 25. A random baseline that mostly emits illegal actions is a straw man that flatters everything above it.
 
+#### Same task, three agents, side by side
+
+<p align="center"><img src="docs/img/three_way.gif" alt="Three panes running the same warehouse task simultaneously: the oracle's optimal certificate plan, the trained PPO agent, and the scripted agent, each with its own step counter and order manifest." width="100%"></p>
+
+The oracle's certificate, the trained PPO policy, and the LLM-slot agent on the *same* task, with their step counters running underneath. All three are graded by the same goal predicate; the leftmost pane is the denominator the other two are measured against.
+
+```bash
+python scripts/make_visuals.py --model checkpoints/ppo_shaped.zip
+```
+
 ### The irreversibility study
 
 This is the result a normal gridworld cannot give you. Packing a SKU an order does not need permanently ruins the box, and because the goal requires every order dispatched, a ruined box makes the goal **provably** unreachable. "Unrecoverable" is therefore not a heuristic judgement — it is a property the oracle decides exactly.
@@ -233,6 +243,10 @@ Adding F(s,s′) = γΦ(s′) − Φ(s) to a reward leaves the optimal policy un
 ## The domain
 
 A discrete 2D grid warehouse. No physics engine — everything is symbolic and finite, which is what makes the oracle exact.
+
+<p align="center"><img src="docs/img/ladder.png" alt="Initial states of one task from each difficulty level side by side, growing from a 7x7 grid with two SKUs to a 13x11 grid with four SKUs, two amber locked zones, keycards and one-way conveyors." width="100%"></p>
+
+<p align="center"><em>One task from each rung of the difficulty ladder. Amber cells are badge-locked zones, chevrons are one-way conveyors, coloured chips are SKU shelves, and the black disc is the robot.</em></p>
 
 - **World**: walls, racking, shelf cells (one per SKU), aisles, one-way conveyor cells, one packing station, badge-locked zones, charge docks.
 - **Agent**: a picker robot with a position, a held multiset under a capacity limit, and an optional battery.
