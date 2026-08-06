@@ -1,0 +1,579 @@
+{
+  "attempts": 462,
+  "accepted": 418,
+  "accept_rate": 0.9048,
+  "coverage_cells": 32,
+  "grid": {
+    "difficulty_buckets": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "entity_signatures": [
+      "s2+o1",
+      "s2+o1+conv",
+      "s2+o2",
+      "s2+o2+conv",
+      "s2+o3",
+      "s2+o3+conv",
+      "s3+o1+conv",
+      "s3+o2+conv",
+      "s3+o3+conv",
+      "s5+o2+conv+z1+bat",
+      "s5+o3+conv+z1+bat",
+      "s6+o3+conv+z2"
+    ]
+  },
+  "max_lineage_depth": 13,
+  "mean_lineage_depth": 6.25,
+  "rejected_by_stage": {
+    "V2": 20,
+    "V1": 24
+  },
+  "mutation_ops": {
+    "add_conveyor": {
+      "tried": 51,
+      "accepted": 28,
+      "accept_rate": 0.549
+    },
+    "add_decoy_stock": {
+      "tried": 39,
+      "accepted": 38,
+      "accept_rate": 0.974
+    },
+    "add_order": {
+      "tried": 43,
+      "accepted": 39,
+      "accept_rate": 0.907
+    },
+    "add_unit": {
+      "tried": 54,
+      "accepted": 49,
+      "accept_rate": 0.907
+    },
+    "drop_unit": {
+      "tried": 34,
+      "accepted": 34,
+      "accept_rate": 1.0
+    },
+    "flip_conveyor": {
+      "tried": 40,
+      "accepted": 38,
+      "accept_rate": 0.95
+    },
+    "loosen_capacity": {
+      "tried": 51,
+      "accepted": 44,
+      "accept_rate": 0.863
+    },
+    "move_sku": {
+      "tried": 41,
+      "accepted": 40,
+      "accept_rate": 0.976
+    },
+    "shift_start": {
+      "tried": 46,
+      "accepted": 46,
+      "accept_rate": 1.0
+    },
+    "tighten_budget": {
+      "tried": 34,
+      "accepted": 34,
+      "accept_rate": 1.0
+    },
+    "tighten_capacity": {
+      "tried": 29,
+      "accepted": 28,
+      "accept_rate": 0.966
+    }
+  },
+  "cells": [
+    {
+      "difficulty": 1,
+      "signature": "s2+o1",
+      "task_id": "wh-d1-s00002~shift_start~move_sku~add_unit~tighten_capacity~tighten_capacity",
+      "optimal_cost": 17,
+      "lineage": [
+        "shift_start",
+        "move_sku",
+        "add_unit",
+        "tighten_capacity",
+        "tighten_capacity"
+      ],
+      "depth": 5
+    },
+    {
+      "difficulty": 1,
+      "signature": "s2+o1+conv",
+      "task_id": "wh-d1-s00002~shift_start~move_sku~add_unit~tighten_capacity~add_conveyor~add_unit",
+      "optimal_cost": 15,
+      "lineage": [
+        "shift_start",
+        "move_sku",
+        "add_unit",
+        "tighten_capacity",
+        "add_conveyor",
+        "add_unit"
+      ],
+      "depth": 6
+    },
+    {
+      "difficulty": 1,
+      "signature": "s2+o2",
+      "task_id": "wh-d1-s00002~shift_start~move_sku~add_order~tighten_capacity",
+      "optimal_cost": 15,
+      "lineage": [
+        "shift_start",
+        "move_sku",
+        "add_order",
+        "tighten_capacity"
+      ],
+      "depth": 4
+    },
+    {
+      "difficulty": 2,
+      "signature": "s2+o1",
+      "task_id": "wh-d1-s00002~shift_start~add_unit~tighten_capacity~tighten_capacity",
+      "optimal_cost": 29,
+      "lineage": [
+        "shift_start",
+        "add_unit",
+        "tighten_capacity",
+        "tighten_capacity"
+      ],
+      "depth": 4
+    },
+    {
+      "difficulty": 2,
+      "signature": "s2+o1+conv",
+      "task_id": "wh-d1-s00002~shift_start~add_unit~tighten_capacity~tighten_capacity~add_conveyor",
+      "optimal_cost": 29,
+      "lineage": [
+        "shift_start",
+        "add_unit",
+        "tighten_capacity",
+        "tighten_capacity",
+        "add_conveyor"
+      ],
+      "depth": 5
+    },
+    {
+      "difficulty": 2,
+      "signature": "s2+o2",
+      "task_id": "wh-d1-s00002~shift_start~move_sku~add_order~tighten_capacity~add_unit~tighten_capacity",
+      "optimal_cost": 18,
+      "lineage": [
+        "shift_start",
+        "move_sku",
+        "add_order",
+        "tighten_capacity",
+        "add_unit",
+        "tighten_capacity"
+      ],
+      "depth": 6
+    },
+    {
+      "difficulty": 2,
+      "signature": "s2+o2+conv",
+      "task_id": "wh-d1-s00002~shift_start~add_conveyor~shift_start~add_unit~tighten_capacity~add_unit~add_order~add_unit~move_sku~move_sku",
+      "optimal_cost": 28,
+      "lineage": [
+        "shift_start",
+        "add_conveyor",
+        "shift_start",
+        "add_unit",
+        "tighten_capacity",
+        "add_unit",
+        "add_order",
+        "add_unit",
+        "move_sku",
+        "move_sku"
+      ],
+      "depth": 10
+    },
+    {
+      "difficulty": 2,
+      "signature": "s2+o3",
+      "task_id": "wh-d1-s00002~shift_start~move_sku~add_order~tighten_capacity~add_order~add_unit~add_unit",
+      "optimal_cost": 22,
+      "lineage": [
+        "shift_start",
+        "move_sku",
+        "add_order",
+        "tighten_capacity",
+        "add_order",
+        "add_unit",
+        "add_unit"
+      ],
+      "depth": 7
+    },
+    {
+      "difficulty": 2,
+      "signature": "s2+o3+conv",
+      "task_id": "wh-d1-s00002~shift_start~add_conveyor~shift_start~add_unit~tighten_capacity~add_unit~add_order~add_unit~add_order~shift_start~move_sku~add_unit",
+      "optimal_cost": 21,
+      "lineage": [
+        "shift_start",
+        "add_conveyor",
+        "shift_start",
+        "add_unit",
+        "tighten_capacity",
+        "add_unit",
+        "add_order",
+        "add_unit",
+        "add_order",
+        "shift_start",
+        "move_sku",
+        "add_unit"
+      ],
+      "depth": 12
+    },
+    {
+      "difficulty": 2,
+      "signature": "s3+o1+conv",
+      "task_id": "wh-d2-s00010",
+      "optimal_cost": 22,
+      "lineage": [],
+      "depth": 0
+    },
+    {
+      "difficulty": 3,
+      "signature": "s2+o1",
+      "task_id": "wh-d1-s00002~shift_start~add_unit~tighten_capacity~tighten_capacity~add_unit",
+      "optimal_cost": 41,
+      "lineage": [
+        "shift_start",
+        "add_unit",
+        "tighten_capacity",
+        "tighten_capacity",
+        "add_unit"
+      ],
+      "depth": 5
+    },
+    {
+      "difficulty": 3,
+      "signature": "s2+o1+conv",
+      "task_id": "wh-d1-s00002~shift_start~add_unit~tighten_capacity~tighten_capacity~add_unit~add_conveyor~add_unit",
+      "optimal_cost": 45,
+      "lineage": [
+        "shift_start",
+        "add_unit",
+        "tighten_capacity",
+        "tighten_capacity",
+        "add_unit",
+        "add_conveyor",
+        "add_unit"
+      ],
+      "depth": 7
+    },
+    {
+      "difficulty": 3,
+      "signature": "s2+o2",
+      "task_id": "wh-d1-s00002~shift_start~add_unit~tighten_capacity~tighten_capacity~add_unit~add_order",
+      "optimal_cost": 46,
+      "lineage": [
+        "shift_start",
+        "add_unit",
+        "tighten_capacity",
+        "tighten_capacity",
+        "add_unit",
+        "add_order"
+      ],
+      "depth": 6
+    },
+    {
+      "difficulty": 3,
+      "signature": "s2+o2+conv",
+      "task_id": "wh-d1-s00002~shift_start~add_conveyor~shift_start~add_unit~tighten_capacity~add_unit~add_order~add_unit~move_sku~add_unit~shift_start",
+      "optimal_cost": 45,
+      "lineage": [
+        "shift_start",
+        "add_conveyor",
+        "shift_start",
+        "add_unit",
+        "tighten_capacity",
+        "add_unit",
+        "add_order",
+        "add_unit",
+        "move_sku",
+        "add_unit",
+        "shift_start"
+      ],
+      "depth": 11
+    },
+    {
+      "difficulty": 3,
+      "signature": "s2+o3",
+      "task_id": "wh-d1-s00002~shift_start~add_unit~tighten_capacity~tighten_capacity~add_unit~add_order~add_order",
+      "optimal_cost": 51,
+      "lineage": [
+        "shift_start",
+        "add_unit",
+        "tighten_capacity",
+        "tighten_capacity",
+        "add_unit",
+        "add_order",
+        "add_order"
+      ],
+      "depth": 7
+    },
+    {
+      "difficulty": 3,
+      "signature": "s2+o3+conv",
+      "task_id": "wh-d1-s00002~shift_start~add_conveyor~shift_start~add_unit~tighten_capacity~add_unit~add_order~add_unit~add_order~shift_start~shift_start",
+      "optimal_cost": 45,
+      "lineage": [
+        "shift_start",
+        "add_conveyor",
+        "shift_start",
+        "add_unit",
+        "tighten_capacity",
+        "add_unit",
+        "add_order",
+        "add_unit",
+        "add_order",
+        "shift_start",
+        "shift_start"
+      ],
+      "depth": 11
+    },
+    {
+      "difficulty": 3,
+      "signature": "s3+o1+conv",
+      "task_id": "wh-d2-s00010~add_unit~tighten_capacity~add_conveyor~add_unit~loosen_capacity",
+      "optimal_cost": 43,
+      "lineage": [
+        "add_unit",
+        "tighten_capacity",
+        "add_conveyor",
+        "add_unit",
+        "loosen_capacity"
+      ],
+      "depth": 5
+    },
+    {
+      "difficulty": 3,
+      "signature": "s3+o2+conv",
+      "task_id": "wh-d3-s00003",
+      "optimal_cost": 45,
+      "lineage": [],
+      "depth": 0
+    },
+    {
+      "difficulty": 4,
+      "signature": "s2+o1+conv",
+      "task_id": "wh-d1-s00002~shift_start~add_unit~tighten_capacity~tighten_capacity~add_unit~add_conveyor~add_unit~move_sku",
+      "optimal_cost": 57,
+      "lineage": [
+        "shift_start",
+        "add_unit",
+        "tighten_capacity",
+        "tighten_capacity",
+        "add_unit",
+        "add_conveyor",
+        "add_unit",
+        "move_sku"
+      ],
+      "depth": 8
+    },
+    {
+      "difficulty": 4,
+      "signature": "s2+o2+conv",
+      "task_id": "wh-d1-s00002~shift_start~add_conveyor~shift_start~add_unit~tighten_capacity~add_unit~add_order~add_unit~move_sku~add_unit~shift_start~tighten_capacity",
+      "optimal_cost": 74,
+      "lineage": [
+        "shift_start",
+        "add_conveyor",
+        "shift_start",
+        "add_unit",
+        "tighten_capacity",
+        "add_unit",
+        "add_order",
+        "add_unit",
+        "move_sku",
+        "add_unit",
+        "shift_start",
+        "tighten_capacity"
+      ],
+      "depth": 12
+    },
+    {
+      "difficulty": 4,
+      "signature": "s2+o3+conv",
+      "task_id": "wh-d1-s00002~shift_start~add_conveyor~shift_start~add_unit~tighten_capacity~add_unit~add_order~add_unit~move_sku~add_unit~shift_start~add_order",
+      "optimal_cost": 58,
+      "lineage": [
+        "shift_start",
+        "add_conveyor",
+        "shift_start",
+        "add_unit",
+        "tighten_capacity",
+        "add_unit",
+        "add_order",
+        "add_unit",
+        "move_sku",
+        "add_unit",
+        "shift_start",
+        "add_order"
+      ],
+      "depth": 12
+    },
+    {
+      "difficulty": 4,
+      "signature": "s3+o1+conv",
+      "task_id": "wh-d2-s00010~add_unit~tighten_capacity~add_conveyor~add_unit~tighten_capacity~flip_conveyor~move_sku~add_unit~loosen_capacity",
+      "optimal_cost": 69,
+      "lineage": [
+        "add_unit",
+        "tighten_capacity",
+        "add_conveyor",
+        "add_unit",
+        "tighten_capacity",
+        "flip_conveyor",
+        "move_sku",
+        "add_unit",
+        "loosen_capacity"
+      ],
+      "depth": 9
+    },
+    {
+      "difficulty": 4,
+      "signature": "s3+o2+conv",
+      "task_id": "wh-d3-s00009~tighten_capacity~shift_start",
+      "optimal_cost": 75,
+      "lineage": [
+        "tighten_capacity",
+        "shift_start"
+      ],
+      "depth": 2
+    },
+    {
+      "difficulty": 4,
+      "signature": "s3+o3+conv",
+      "task_id": "wh-d3-s00003~add_order~tighten_capacity~shift_start~shift_start",
+      "optimal_cost": 79,
+      "lineage": [
+        "add_order",
+        "tighten_capacity",
+        "shift_start",
+        "shift_start"
+      ],
+      "depth": 4
+    },
+    {
+      "difficulty": 4,
+      "signature": "s5+o2+conv+z1+bat",
+      "task_id": "wh-d4-s00001",
+      "optimal_cost": 67,
+      "lineage": [],
+      "depth": 0
+    },
+    {
+      "difficulty": 5,
+      "signature": "s2+o2+conv",
+      "task_id": "wh-d1-s00002~shift_start~add_conveyor~shift_start~add_unit~tighten_capacity~add_unit~add_order~add_unit~move_sku~add_unit~add_unit~tighten_capacity~shift_start",
+      "optimal_cost": 87,
+      "lineage": [
+        "shift_start",
+        "add_conveyor",
+        "shift_start",
+        "add_unit",
+        "tighten_capacity",
+        "add_unit",
+        "add_order",
+        "add_unit",
+        "move_sku",
+        "add_unit",
+        "add_unit",
+        "tighten_capacity",
+        "shift_start"
+      ],
+      "depth": 13
+    },
+    {
+      "difficulty": 5,
+      "signature": "s3+o1+conv",
+      "task_id": "wh-d2-s00010~add_unit~tighten_capacity~add_conveyor~add_unit~tighten_capacity~flip_conveyor~move_sku~add_unit",
+      "optimal_cost": 116,
+      "lineage": [
+        "add_unit",
+        "tighten_capacity",
+        "add_conveyor",
+        "add_unit",
+        "tighten_capacity",
+        "flip_conveyor",
+        "move_sku",
+        "add_unit"
+      ],
+      "depth": 8
+    },
+    {
+      "difficulty": 5,
+      "signature": "s3+o2+conv",
+      "task_id": "wh-d3-s00009~tighten_capacity~add_unit~add_unit~add_unit~add_unit~move_sku~shift_start~shift_start",
+      "optimal_cost": 159,
+      "lineage": [
+        "tighten_capacity",
+        "add_unit",
+        "add_unit",
+        "add_unit",
+        "add_unit",
+        "move_sku",
+        "shift_start",
+        "shift_start"
+      ],
+      "depth": 8
+    },
+    {
+      "difficulty": 5,
+      "signature": "s3+o3+conv",
+      "task_id": "wh-d3-s00009~tighten_capacity~add_unit~add_unit~add_unit~add_order~add_unit~add_unit",
+      "optimal_cost": 181,
+      "lineage": [
+        "tighten_capacity",
+        "add_unit",
+        "add_unit",
+        "add_unit",
+        "add_order",
+        "add_unit",
+        "add_unit"
+      ],
+      "depth": 7
+    },
+    {
+      "difficulty": 5,
+      "signature": "s5+o2+conv+z1+bat",
+      "task_id": "wh-d4-s00004~add_conveyor~flip_conveyor~tighten_capacity",
+      "optimal_cost": 125,
+      "lineage": [
+        "add_conveyor",
+        "flip_conveyor",
+        "tighten_capacity"
+      ],
+      "depth": 3
+    },
+    {
+      "difficulty": 5,
+      "signature": "s5+o3+conv+z1+bat",
+      "task_id": "wh-d4-s00001~add_order",
+      "optimal_cost": 90,
+      "lineage": [
+        "add_order"
+      ],
+      "depth": 1
+    },
+    {
+      "difficulty": 5,
+      "signature": "s6+o3+conv+z2",
+      "task_id": "wh-d5-s00005~flip_conveyor~add_unit",
+      "optimal_cost": 124,
+      "lineage": [
+        "flip_conveyor",
+        "add_unit"
+      ],
+      "depth": 2
+    }
+  ]
+}

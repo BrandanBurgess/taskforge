@@ -136,9 +136,9 @@ def main() -> None:
         t0 = time.time()
         env = build_masked_env(tasks, "shaped", seed=args.seed)
         model = MaskablePPO(
-            "MlpPolicy", env, seed=args.seed, device="cpu", n_steps=1024,
+            "MlpPolicy", env, seed=args.seed, device="cpu", n_steps=2048,
             batch_size=256, ent_coef=0.003, n_epochs=10,
-            policy_kwargs={"net_arch": [64, 64]}, verbose=0,
+            policy_kwargs={"net_arch": [128, 128]}, verbose=0,
         )
         model.learn(total_timesteps=steps, progress_bar=False)
         stats = evaluate_policy(model, tasks, 1)

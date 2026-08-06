@@ -1,0 +1,269 @@
+{
+  "n_tasks": 60,
+  "pearson_r": -0.7084,
+  "note": "Correlation between the oracle-derived difficulty score (plan length x SKU scatter x branching) and pooled agent success rate. Negative r is the expected direction: harder tasks, fewer solves.",
+  "by_bucket": {
+    "1": {
+      "n": 11,
+      "mean_success": 0.5844
+    },
+    "2": {
+      "n": 12,
+      "mean_success": 0.3452
+    },
+    "3": {
+      "n": 11,
+      "mean_success": 0.0909
+    },
+    "4": {
+      "n": 13,
+      "mean_success": 0.0
+    },
+    "5": {
+      "n": 13,
+      "mean_success": 0.0
+    }
+  },
+  "points": [
+    {
+      "score": 11.391,
+      "success": 0.5714
+    },
+    {
+      "score": 15.565,
+      "success": 0.5714
+    },
+    {
+      "score": 16.127,
+      "success": 0.5714
+    },
+    {
+      "score": 14.046,
+      "success": 0.5714
+    },
+    {
+      "score": 12.708,
+      "success": 0.5714
+    },
+    {
+      "score": 11.021,
+      "success": 0.7143
+    },
+    {
+      "score": 14.143,
+      "success": 0.5714
+    },
+    {
+      "score": 10.759,
+      "success": 0.5714
+    },
+    {
+      "score": 9.16,
+      "success": 0.5714
+    },
+    {
+      "score": 18.716,
+      "success": 0.5714
+    },
+    {
+      "score": 12.214,
+      "success": 0.5714
+    },
+    {
+      "score": 14.143,
+      "success": 0.5714
+    },
+    {
+      "score": 35.389,
+      "success": 0.0
+    },
+    {
+      "score": 31.525,
+      "success": 0.5714
+    },
+    {
+      "score": 31.35,
+      "success": 0.0
+    },
+    {
+      "score": 29.14,
+      "success": 0.5714
+    },
+    {
+      "score": 29.409,
+      "success": 0.5714
+    },
+    {
+      "score": 25.481,
+      "success": 0.5714
+    },
+    {
+      "score": 41.284,
+      "success": 0.0
+    },
+    {
+      "score": 36.736,
+      "success": 0.0
+    },
+    {
+      "score": 29.935,
+      "success": 0.0
+    },
+    {
+      "score": 34.304,
+      "success": 0.5714
+    },
+    {
+      "score": 37.29,
+      "success": 0.1429
+    },
+    {
+      "score": 25.978,
+      "success": 0.5714
+    },
+    {
+      "score": 68.466,
+      "success": 0.0
+    },
+    {
+      "score": 65.201,
+      "success": 0.0
+    },
+    {
+      "score": 67.252,
+      "success": 0.0
+    },
+    {
+      "score": 70.111,
+      "success": 0.0
+    },
+    {
+      "score": 54.473,
+      "success": 0.0
+    },
+    {
+      "score": 64.274,
+      "success": 0.0
+    },
+    {
+      "score": 54.479,
+      "success": 0.0
+    },
+    {
+      "score": 63.306,
+      "success": 0.0
+    },
+    {
+      "score": 72.06,
+      "success": 0.0
+    },
+    {
+      "score": 84.883,
+      "success": 0.0
+    },
+    {
+      "score": 65.752,
+      "success": 0.4286
+    },
+    {
+      "score": 64.255,
+      "success": 0.5714
+    },
+    {
+      "score": 112.948,
+      "success": 0.0
+    },
+    {
+      "score": 114.229,
+      "success": 0.0
+    },
+    {
+      "score": 88.759,
+      "success": 0.0
+    },
+    {
+      "score": 105.445,
+      "success": 0.0
+    },
+    {
+      "score": 123.878,
+      "success": 0.0
+    },
+    {
+      "score": 81.007,
+      "success": 0.0
+    },
+    {
+      "score": 111.366,
+      "success": 0.0
+    },
+    {
+      "score": 115.537,
+      "success": 0.0
+    },
+    {
+      "score": 115.627,
+      "success": 0.0
+    },
+    {
+      "score": 103.647,
+      "success": 0.0
+    },
+    {
+      "score": 117.316,
+      "success": 0.0
+    },
+    {
+      "score": 102.731,
+      "success": 0.0
+    },
+    {
+      "score": 156.915,
+      "success": 0.0
+    },
+    {
+      "score": 178.116,
+      "success": 0.0
+    },
+    {
+      "score": 170.726,
+      "success": 0.0
+    },
+    {
+      "score": 168.836,
+      "success": 0.0
+    },
+    {
+      "score": 145.867,
+      "success": 0.0
+    },
+    {
+      "score": 181.555,
+      "success": 0.0
+    },
+    {
+      "score": 159.897,
+      "success": 0.0
+    },
+    {
+      "score": 151.943,
+      "success": 0.0
+    },
+    {
+      "score": 170.496,
+      "success": 0.0
+    },
+    {
+      "score": 151.085,
+      "success": 0.0
+    },
+    {
+      "score": 146.936,
+      "success": 0.0
+    },
+    {
+      "score": 126.346,
+      "success": 0.0
+    }
+  ]
+}

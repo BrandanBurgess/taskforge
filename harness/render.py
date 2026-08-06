@@ -284,12 +284,17 @@ class WarehouseRenderer:
         if path:
             self._draw_path(surf, path)
 
-        # header
+        # header (only when a header band was reserved -- otherwise it would print
+        # straight over the top row of cells)
         ox, oy = self._origin()
-        title = self.cfg.title or self.spec.task_id
-        _text(surf, title, (ox, self.cfg.margin - 2), size=15, color=t.ink, bold=True)
-        if self.cfg.subtitle:
-            _text(surf, self.cfg.subtitle, (ox, self.cfg.margin + 20), size=11, color=t.ink_muted)
+        if self.cfg.header_h > 0:
+            title = self.cfg.title or self.spec.task_id
+            _text(surf, title, (ox, self.cfg.margin - 2), size=15, color=t.ink, bold=True)
+            if self.cfg.subtitle:
+                _text(
+                    surf, self.cfg.subtitle, (ox, self.cfg.margin + 20), size=11,
+                    color=t.ink_muted,
+                )
 
         pos, held, filled, dispatched, unlocked, ruined, battery = state
 
@@ -362,12 +367,14 @@ class WarehouseRenderer:
     def _draw_path(self, surf: pygame.Surface, path: list[int]) -> None:
         if len(path) < 2:
             return
+        # Halo then hairline, so the trace stays legible over the heat field without
+        # burying the per-cell V* numbers underneath it.
         pts = [self.cell_center(i) for i in path]
-        pygame.draw.lines(surf, C(self.theme.surface), False, pts, 6)
-        pygame.draw.lines(surf, C(self.theme.ink), False, pts, 2)
-        for p in (pts[0], pts[-1]):
-            pygame.draw.circle(surf, C(self.theme.surface), (int(p[0]), int(p[1])), 6)
-            pygame.draw.circle(surf, C(self.theme.ink), (int(p[0]), int(p[1])), 4)
+        pygame.draw.lines(surf, C(self.theme.surface), False, pts, 5)
+        pygame.draw.lines(surf, C(mix(self.theme.ink, self.theme.surface, 0.25)), False, pts, 2)
+        for p, col in ((pts[0], self.theme.ink), (pts[-1], self.theme.ink)):
+            pygame.draw.circle(surf, C(self.theme.surface), (int(p[0]), int(p[1])), 5)
+            pygame.draw.circle(surf, C(col), (int(p[0]), int(p[1])), 3)
 
     # -- side panel --------------------------------------------------------------------
     def _draw_panel(

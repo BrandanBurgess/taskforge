@@ -150,14 +150,14 @@ def train_one(tasks, eval_tasks, reward: str, seed: int, steps: int, eval_every:
         env,
         seed=seed,
         device="cpu",
-        n_steps=1024,
+        n_steps=2048,
         batch_size=256,
         learning_rate=3e-4,
         gamma=0.99,
         gae_lambda=0.95,
         ent_coef=0.003,
         n_epochs=10,
-        policy_kwargs={"net_arch": [64, 64]},
+        policy_kwargs={"net_arch": [128, 128]},
         verbose=0,
     )
     t0 = time.time()

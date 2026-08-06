@@ -97,7 +97,7 @@ def funnel(results: dict, theme: Theme = LIGHT) -> Path:
         ax.grid(axis="y", visible=False)
         ax.set_axisbelow(True)
 
-        for yi, (lab, v) in zip(y, stages, strict=True):
+        for yi, (_lab, v) in zip(y, stages, strict=True):
             pct = 100 * v / max(1, arm["attempts"])
             ax.text(
                 v + max(vals) * 0.015,
@@ -304,7 +304,9 @@ def agent_eval(evaluation: dict, theme: Theme = LIGHT) -> Path:
     ax.set_ylim(0, 1.08)
     ax.set_ylabel("pass@1")
     ax.set_title("Success by difficulty", color=theme.ink)
-    ax.legend(ncols=2, loc="upper right")
+    # Legend below the plot: at D1 several agents are at 1.00 and an in-axes legend
+    # sits straight on top of the bars.
+    ax.legend(ncols=2, loc="upper center", bbox_to_anchor=(0.5, -0.16), frameon=False)
 
     # -- plan efficiency ------------------------------------------------------------
     ax = axes[1]
@@ -320,6 +322,31 @@ def agent_eval(evaluation: dict, theme: Theme = LIGHT) -> Path:
         "oracle-optimal = 1.0", (0.02, 1.0), xycoords=("axes fraction", "data"),
         textcoords="offset points", xytext=(0, 6), fontsize=8.5, color=theme.ink_muted,
     )
+    # Clip the axis to the interesting band and label anything above it in place. The
+    # random agent's ~12x on the easiest bucket would otherwise flatten every bar that
+    # actually matters into an indistinguishable strip.
+    finite = [
+        v
+        for a in agents
+        for v in (
+            evaluation["agents"][a]["by_difficulty"].get(b, {}).get("mean_length_ratio")
+            for b in buckets
+        )
+        if v
+    ]
+    cap = max(2.2, min(3.5, (max(finite) if finite else 2.0)))
+    ax.set_ylim(0, cap)
+    for i, a in enumerate(agents):
+        rep = evaluation["agents"][a]["by_difficulty"]
+        for j, b in enumerate(buckets):
+            v = rep.get(b, {}).get("mean_length_ratio")
+            if v and v > cap:
+                ax.annotate(
+                    f"{v:.1f}x",
+                    (j + i * width - 0.4 + width / 2, cap),
+                    ha="center", va="top", fontsize=8, color=theme.surface,
+                    textcoords="offset points", xytext=(0, -4), rotation=90,
+                )
     ax.set_xticks(range(len(buckets)), [f"D{b}" for b in buckets])
     ax.set_ylabel("steps / oracle-optimal")
     ax.set_title("Plan efficiency (solved episodes only)", color=theme.ink)
@@ -377,7 +404,8 @@ def map_elites(archive: dict, theme: Theme = LIGHT) -> Path:
     for r in range(len(sigs)):
         for c in range(len(buckets)):
             if not np.isnan(grid[r, c]):
-                frac = (grid[r, c] - np.nanmin(grid)) / max(1e-9, np.nanptp(grid))
+                span = float(np.nanmax(grid) - np.nanmin(grid))
+                frac = (grid[r, c] - np.nanmin(grid)) / max(1e-9, span)
                 ax.text(
                     c, r, f"{int(grid[r, c])}", ha="center", va="center", fontsize=8,
                     color=theme.surface if frac > 0.5 else theme.ink,
@@ -479,7 +507,7 @@ def generalization(training: dict, theme: Theme = LIGHT) -> Path:
             )
 
     x = np.arange(2)
-    for i, (key, lab, seen, held) in enumerate(entries):
+    for key, lab, seen, held in entries:
         col = agent_color(key, theme)
         m = [float(np.mean(seen)), float(np.mean(held))]
         ax.plot(x, m, color=col, marker="o", markersize=7, markeredgecolor=theme.surface,

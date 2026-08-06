@@ -115,9 +115,9 @@ def main() -> None:
         print(f"  {name:8s} pass@1 {reports[name]['overall']['pass_at_1']:.3f}")
 
     if args.model and Path(args.model).exists():
-        from stable_baselines3 import PPO
+        from sb3_contrib import MaskablePPO
 
-        model = PPO.load(args.model, device="cpu")
+        model = MaskablePPO.load(args.model, device="cpu")
         res = run_agent(tasks, PolicyAgent(model, name="ppo"), args.episodes)
         reports["ppo"] = summarize(res, "ppo")
         print(f"  {'ppo':8s} pass@1 {reports['ppo']['overall']['pass_at_1']:.3f}")

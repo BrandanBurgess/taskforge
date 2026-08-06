@@ -11,7 +11,7 @@ from pathlib import Path
 import numpy as np
 
 from harness.figures import cost_to_go_panels
-from harness.palette import LIGHT, Theme
+from harness.palette import LIGHT, Theme  # noqa: F401
 from harness.render import (
     RenderConfig,
     WarehouseRenderer,
@@ -175,9 +175,9 @@ def build_three_way(task, model_path: str | None = None, theme: Theme = LIGHT, c
     panes.append(("oracle", frames))
 
     if model_path and Path(model_path).exists():
-        from stable_baselines3 import PPO
+        from sb3_contrib import MaskablePPO
 
-        model = PPO.load(model_path, device="cpu")
+        model = MaskablePPO.load(model_path, device="cpu")
         f, n, _ = render_agent_episode(task, PolicyAgent(model), theme, cell, "PPO agent")
         panes.append(("ppo", f))
 
